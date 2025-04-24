@@ -48,7 +48,7 @@ final services = [
             style: const TextStyle(
           fontFamily: 'Mulish',
          fontSize: 45,
-                    color: Colors.white,
+                    color:  Color(0xff32CD32),
                     fontWeight: FontWeight.w800,
         ),
             child: AnimatedTextKit(
@@ -61,7 +61,7 @@ final services = [
             ],
             totalRepeatCount: 2,
             repeatForever: true,
-            pause: const Duration(milliseconds: 10000),
+            pause: const Duration(milliseconds: 5000),
             displayFullTextOnTap: true,
             stopPauseOnTap: true,
                     ),
@@ -96,7 +96,7 @@ final services = [
                                     Stack(
                                       children: [
                                         Container(
-                                          height: 220,
+                                          height: 250,
                                           width: 270,
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(5),
@@ -124,7 +124,7 @@ final services = [
                                             overflow: TextOverflow.ellipsis,
                                             style: const TextStyle(
                                               fontSize: 16,
-                                              fontWeight: FontWeight.w500,
+                                              fontWeight: FontWeight.w600,
                                             ),
                                           ),
                                          
@@ -139,25 +139,25 @@ final services = [
             },
           ),
         ),
-          const SizedBox(height: 32),
-         ElevatedButton(
-                        onPressed: () {
-                          //context.go('/Our_Services');
-                          context.go('/about-us/our-mission&vision&values');
-                        },
-                        style: ElevatedButton.styleFrom(
-                          fixedSize: const Size(170, 45),
-                          backgroundColor: const Color(0xff4779A3),
-                        ),
-                        child: const Text(
-                          'Learn more',
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: Color(0xffffffff),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
+        //   const SizedBox(height: 32),
+        //  ElevatedButton(
+        //                 onPressed: () {
+        //                   //context.go('/Our_Services');
+        //                   context.go('/about-us/our-mission&vision&values');
+        //                 },
+        //                 style: ElevatedButton.styleFrom(
+        //                   fixedSize: const Size(170, 45),
+        //                   backgroundColor: const Color(0xff4779A3),
+        //                 ),
+        //                 child: const Text(
+        //                   'Learn more',
+        //                   style: TextStyle(
+        //                     fontSize: 13,
+        //                     color: Color(0xffffffff),
+        //                     fontWeight: FontWeight.bold,
+        //                   ),
+        //                 ),
+        //               ),
         ],
       ),
     );

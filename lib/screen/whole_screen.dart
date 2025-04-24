@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:solevad/screen/sections/booking.dart';
 
 import 'package:solevad/screen/sections/bottom_bar.dart';
 import 'package:solevad/screen/sections/eighth_section.dart';
@@ -385,6 +386,7 @@ title: ResponsiveWidget.isSmallScreen(context)
        
        FifthSection(),
        TeamSection(),
+       Booking(),
  SizedBox(
           height: 50.0,
         ),

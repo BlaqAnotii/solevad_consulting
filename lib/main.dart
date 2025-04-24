@@ -7,6 +7,7 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:solevad/bloc/screen_offset.dart';
 import 'package:solevad/screen/blog.dart';
 import 'package:solevad/screen/careers.dart';
+import 'package:solevad/screen/consult.dart';
 import 'package:solevad/screen/contact_us.dart';
 import 'package:solevad/screen/energy.dart';
 import 'package:solevad/screen/our_community.dart';
@@ -89,6 +90,12 @@ void main() {
           path: '/contact_us',
           builder: (context, GoRouterState state) {
             return const ContactUsScreen();
+          },
+        ),
+         GoRoute(
+          path: '/book-consultation',
+          builder: (context, GoRouterState state) {
+            return const ConsultScreen();
           },
         ),
            GoRoute(

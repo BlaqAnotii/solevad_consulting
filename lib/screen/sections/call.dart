@@ -137,6 +137,26 @@ class _CallState extends State<Call> {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
+                 const SizedBox(height: 20),
+
+               const Text(
+                  'Email',
+                  style: TextStyle(
+                    fontSize: 17,
+ color: Color(0xff32CD32),
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                                const SizedBox(height: 10),
+
+                const Text(
+                  'info@solevad.com',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
                 const SizedBox(height: 40),
                
               ],
@@ -180,12 +200,110 @@ class _CallState extends State<Call> {
         children: [
           size.width > 600
               ? Container()
-              : Image.asset(
-                'assets/images/call2.jpg',
-                  height: size.height * 0.4,
-                  width: size.width,
-                  fit: BoxFit.cover,
+              : Stack(
+                children: [
+                  Image.asset(
+                    'assets/images/call2.jpg',
+                      height: size.height * 0.8,
+                      width: size.width,
+                      fit: BoxFit.cover,
+                    ),
+                    Positioned(
+            left: 90,
+            top: 130,
+            right: 50,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                 DefaultTextStyle(
+        style: const TextStyle(
+          fontFamily: 'Mulish',
+         fontSize: 25,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+        ),
+        child: AnimatedTextKit(
+          animatedTexts: [
+            TypewriterAnimatedText(
+              "We'd Love to Hear From You...",
+              speed: const Duration(milliseconds: 100),
+              cursor: '|'
+            ),
+          ],
+          totalRepeatCount: 1,
+          pause: const Duration(milliseconds: 1000),
+          displayFullTextOnTap: true,
+          stopPauseOnTap: true,
+        ),
+      ),
+              
+                const SizedBox(height: 20),
+
+               const Text(
+                  'Address',
+                  style: TextStyle(
+                    fontSize: 17,
+ color: Color(0xff32CD32),
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
+                                const SizedBox(height: 10),
+
+                const Text(
+                  'Edo house complex, suite 105 Bishop Oluwole Street,\nVictoria island.',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                 const SizedBox(height: 20),
+
+               const Text(
+                  'Phone',
+                  style: TextStyle(
+                    fontSize: 17,
+ color: Color(0xff32CD32),
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                                const SizedBox(height: 10),
+
+                const Text(
+                  '+1 (469) 544-6914, 09028297993',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                 const SizedBox(height: 20),
+
+               const Text(
+                  'Email',
+                  style: TextStyle(
+                    fontSize: 17,
+ color: Color(0xff32CD32),
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                                const SizedBox(height: 10),
+
+                const Text(
+                  'info@solevad.com',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 40),
+               
+              ],
+            ),
+          ),
+                ],
+              ),
           SizedBox(
             height: size.height * 0.03,
           ),

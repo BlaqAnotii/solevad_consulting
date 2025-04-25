@@ -161,6 +161,9 @@ class _FirstSectionState extends State<FirstSection>
                     context.go('/products&services/solar-development');
                   },
                   style: ElevatedButton.styleFrom(
+                     shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(1),
+                          ),
                     fixedSize: const Size(165, 45),
                     backgroundColor: Colors.white,
                   ),
@@ -261,6 +264,9 @@ class _FirstSectionState extends State<FirstSection>
                     context.go('/products&services/solar-development');
                   },
                   style: ElevatedButton.styleFrom(
+                     shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(1),
+                          ),
                     fixedSize: const Size(170, 45),
                     backgroundColor: Colors.white,
                   ),
@@ -284,6 +290,12 @@ class _FirstSectionState extends State<FirstSection>
   }
 
 }
+
+
+
+
+
+
 
 class FirstPageImage extends StatefulWidget {
   const FirstPageImage({

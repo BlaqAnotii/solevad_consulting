@@ -124,6 +124,9 @@ class _MarketState extends State<Market> {
                           context.go('/about-us/our-mission&vision&values');
                         },
                         style: ElevatedButton.styleFrom(
+                           shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(1),
+                          ),
                           fixedSize: const Size(170, 45),
                           backgroundColor: const Color(0xff4779A3),
                         ),

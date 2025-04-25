@@ -17,16 +17,13 @@ class BottomBar extends StatelessWidget {
           Container(
       height: 600,
   padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 40),
-   decoration: const BoxDecoration(
-  gradient: LinearGradient(
-    begin: Alignment.centerLeft, // Start from the left
-    end: Alignment.centerRight,  // End at the right
-    colors: [
-      Color(0xFF1A1A1A), // Dark gray on the left
-      Color(0xFF2C2C2C), // Slightly lighter gray on the right
-    ],
-  ),
-),
+ decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/black.jpg',),
+                    fit: BoxFit.cover,
+                   
+                  ),
+                ),
   child: Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +46,7 @@ class BottomBar extends StatelessWidget {
               ),
               SizedBox(height: 18),
               Text(
-                "Stay updated on new developments and progress with Solevad Energy.",
+                "Stay updated on new developments and progress with Solevad Consulting.",
                 style: TextStyle(
                   color: Colors.white70,
                   fontSize: 22,
@@ -176,7 +173,7 @@ Container(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "© 2025 Solevad Energy. Copyright and rights reserved",
+            "© 2025 Solevad Consulting. Copyright and rights reserved",
             style: TextStyle(color: Colors.white70, fontSize: 15),
           ),
                  SizedBox(height: 10),
@@ -194,16 +191,13 @@ Container(
     Container(
       height: 400,
   padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 40),
-   decoration: const BoxDecoration(
-  gradient: LinearGradient(
-    begin: Alignment.centerLeft, // Start from the left
-    end: Alignment.centerRight,  // End at the right
-    colors: [
-      Color(0xFF1A1A1A), // Dark gray on the left
-      Color(0xFF2C2C2C), // Slightly lighter gray on the right
-    ],
-  ),
-),
+    decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/black.jpg',),
+                    fit: BoxFit.cover,
+                   
+                  ),
+                ),
   child: Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     mainAxisAlignment: MainAxisAlignment.center,
@@ -228,7 +222,7 @@ Container(
                 ),
                 SizedBox(height: 18),
                 Text(
-                  "Stay updated on new developments and progress\nwith Solevad Energy.",
+                  "Stay updated on new developments and progress\nwith Solevad Consulting.",
                   style: TextStyle(
                     color: Colors.white70,
                     fontSize: 22,
@@ -355,7 +349,7 @@ Container(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "© 2025 Solevad Energy. Copyright and rights reserved",
+            "© 2025 Solevad Consulting. Copyright and rights reserved",
             style: TextStyle(color: Colors.white70, fontSize: 15),
           ),
           Text(

@@ -863,3 +863,40 @@ class _CallState extends State<Call> {
     );
   }
 }
+
+class Blogs extends StatefulWidget {
+  const Blogs({super.key});
+
+  @override
+  State<Blogs> createState() => _BlogsState();
+}
+
+class _BlogsState extends State<Blogs> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: DefaultTextStyle(
+                  style: const TextStyle(
+          fontFamily: 'Mulish',
+                   fontSize: 45,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w800,
+                  ),
+                  child: AnimatedTextKit(
+          animatedTexts: [
+            TypewriterAnimatedText(
+              'No Recent Article...',
+              speed: const Duration(milliseconds: 100),
+              cursor: '|'
+            ),
+          ],
+          totalRepeatCount: 2,
+          repeatForever: true,
+          pause: const Duration(milliseconds: 10000),
+          displayFullTextOnTap: true,
+          stopPauseOnTap: true,
+                  ),
+                ),
+    );
+  }
+}

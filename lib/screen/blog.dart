@@ -1,9 +1,11 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:solevad/bloc/screen_offset.dart';
 import 'package:solevad/screen/sections/bottom_bar.dart';
+import 'package:solevad/screen/sections/call.dart';
 import 'package:solevad/screen/widget/responsive.dart';
 import 'package:solevad/screen/widget/text_reveal.dart';
 
@@ -287,230 +289,12 @@ int? _hoveredIndex; // null when nothing is hovered
             ? _scrollPosition /
                 (screenSize.height * 0.40)
             : 1;
-    return Scaffold(
-        backgroundColor:
-            Theme.of(context).colorScheme.surface,
-        extendBodyBehindAppBar: true,
-        appBar: ResponsiveWidget.isSmallScreen(
-                context)
-            ? AppBar(
-                backgroundColor:
-                    const Color(0xffffffff),
-                elevation: 0,
-                centerTitle: true,
-                toolbarHeight: 80,
-                leading: Builder(
-                  builder: (context) =>
-                      IconButton(
-                    icon: const Icon(
-                        Iconsax.menu_1_outline,
-                        color: Colors.black),
-                    onPressed: () {
-                      Scaffold.of(context)
-                          .openDrawer(); // Opens the drawer using correct context
-                    },
-                  ),
-                ),
-                title: Image.asset(
-                  'assets/images/newlogo.png',
-                  scale: 6,
-                ),
-              )
-            : PreferredSize(
-              preferredSize: Size(screenSize.width, 1000),
-              child: Container(
-                color: const Color(0xfffffffff),
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(width: screenSize.width / 70),
-                      InkWell(
-                        onTap: () {
-                                 context.go('/home');
-
-                        },
-                        child: Image.asset(
-                          'assets/images/newlogo.png',
-                          scale: 6,
-                        ),
-                      ),
-
-                      // const Text(
-                      //   'Solevad Energy',
-                      //   style: TextStyle(
-                      //     color: Colors.white,
-                      //     fontSize: 20,
-                      //     fontWeight: FontWeight.w500,
-                      //     letterSpacing: 3,
-                      //   ),
-                      // ),
-                      Expanded(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(width: screenSize.width / 12),
-                            InkWell(
-                              onHover: (value) {
-                                setState(() {
-                                  value
-                                      ? _isHovering[0] = true
-                                      : _isHovering[0] = false;
-                                });
-                              },
-                              onTap: () {
-                                context.go('/home');
-                              },
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    'Home',
-                                    style: TextStyle(
-                                      color: _isHovering[0]
-                                          ? Colors.blue[200]
-                                          : Colors.black,
-                                          fontWeight: FontWeight.bold
-                                    ),
-                                  ),
-                                  const SizedBox(height: 5),
-                                  Visibility(
-                                    maintainAnimation: true,
-                                    maintainState: true,
-                                    maintainSize: true,
-                                    visible: _isHovering[0],
-                                    child: Container(
-                                      height: 2,
-                                      width: 20,
-                                      color: Colors.white,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                    SizedBox(width: screenSize.width / 20),
-                            _buildMenuItem(context, "About Us", 0),
-                    SizedBox(width: screenSize.width / 20),
-                    _buildMenuItem(context, "Products & Services", 1),
-                            SizedBox(width: screenSize.width / 20),
-                            InkWell(
-                              onHover: (value) {
-                                setState(() {
-                                  value
-                                      ? _isHovering[3] = true
-                                      : _isHovering[3] = false;
-                                });
-                              },
-                              onTap: () {
-                                context.go('/contact_us');
-                              },
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    'Contact Us',
-                                    style: TextStyle(
-                                      color: _isHovering[3]
-                                          ? Colors.blue[200]
-                                          : Colors.black,
-                                          fontWeight: FontWeight.bold
-                                    ),
-                                  ),
-                                  const SizedBox(height: 5),
-                                  Visibility(
-                                    maintainAnimation: true,
-                                    maintainState: true,
-                                    maintainSize: true,
-                                    visible: _isHovering[3],
-                                    child: Container(
-                                      height: 2,
-                                      width: 20,
-                                      color: Colors.white,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            SizedBox(width: screenSize.width / 20),
-                            InkWell(
-                              onHover: (value) {
-                                setState(() {
-                                  value
-                                      ? _isHovering[4] = true
-                                      : _isHovering[4] = false;
-                                });
-                              },
-                              onTap: () {
-                                context.go('/blog');
-                              },
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    'Blog',
-                                    style: TextStyle(
-                                      color: _isHovering[4]
-                                          ? Colors.blue[200]
-                                          : Colors.black,
-                                          fontWeight: FontWeight.bold
-                                    ),
-                                  ),
-                                  const SizedBox(height: 5),
-                                  Visibility(
-                                    maintainAnimation: true,
-                                    maintainState: true,
-                                    maintainSize: true,
-                                    visible: _isHovering[4],
-                                    child: Container(
-                                      height: 2,
-                                      width: 20,
-                                      color: Colors.white,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      // IconButton(
-                      //   icon: const Icon(Icons.brightness_6),
-                      //   splashColor: Colors.transparent,
-                      //   highlightColor: Colors.transparent,
-                      //   color: Colors.white,
-                      //   onPressed: () {
-                      //     EasyDynamicTheme.of(context).changeTheme();
-                      //   },
-                      // ),
-                      SizedBox(width: screenSize.width / 20),
-                      ElevatedButton(
-                        onPressed: () {
-                          //context.go('/Our_Services');
-                          context.go('/contact_us');
-                        },
-                        style: ElevatedButton.styleFrom(
-                          fixedSize: const Size(170, 45),
-                          backgroundColor: const Color(0xff4779A3),
-                        ),
-                        child: const Text(
-                          'Get Started',
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: Color(0xffffffff),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: screenSize.width / 20,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ), 
-      drawer: Drawer(
+    return   Scaffold(
+      resizeToAvoidBottomInset: true,
+       drawer: ResponsiveWidget.isSmallScreen(context)
+         ? 
+      
+      Drawer(
         child: Container(
           color: const Color(0xfffffffff),
           child: Column(
@@ -520,7 +304,7 @@ int? _hoveredIndex; // null when nothing is hovered
               const SizedBox(height: 30),
               Center(
                 child: Image.asset(
-                  'assets/images/newlogo.png',
+                  'assets/images/solevadlogo.png',
                   scale: 6,
                 ),
               ),
@@ -548,7 +332,11 @@ int? _hoveredIndex; // null when nothing is hovered
                   ),
                 ),
               ),
-              ExpansionTile(
+               ListTile(
+                onTap: () {
+                                                  context.go('/about-us');
+
+                },
                 leading: const Icon(
                   Iconsax.profile_2user_bold,
                   size: 22,
@@ -561,144 +349,26 @@ int? _hoveredIndex; // null when nothing is hovered
                     color: Colors.black,
                   ),
                 ),
-                trailing: const Icon(
-                  Iconsax.arrow_down_1_outline,
-                  size: 22,
-                  color: Colors.black,
-                ),
-       
-                children: <Widget>[
-                  ListTile(
-                    title: const Text(
-                      'Our Team',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      //  navigationService.push(const WithdrawMoneyScreen());
-                                            context.go('/about-us/our-team');
-
-                      // Navigate or handle logic for withdrawing money
-                    },
-                  ),
-                  ListTile(
-                    title: const Text(
-                      'Our Vision, Mission & Values',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      // Navigate or handle logic for viewing withdrawal list
-                      // navigationService
-                      //     .push(const WithdarwalListScreen());
-                                            context.go('/about-us/our-mission&vision&values');
-
-                    },
-                  ),
-                  ListTile(
-                    title: const Text(
-                      'Careers at Solevad',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      // Navigate or handle logic for withdrawal settings
-                      // navigationService
-                      //     .push(const WithdrawalSettingScreen());
-                      context.go('/about-us/careers');
-
-                    },
-                  ),
-                ],
+               
               ),
-              ExpansionTile(
+              ListTile(
+                onTap: () {
+                                                  context.go('/services');
+
+                },
                 leading: const Icon(
                   Iconsax.bag_2_bold,
                   size: 22,
                   color: Color(0xff4779A3),
                 ),
                 title: const Text(
-                  'Products & Services',
+                  'Services',
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.black,
                   ),
                 ),
-                trailing: const Icon(
-                  Iconsax.arrow_down_1_outline,
-                  size: 22,
-                  color: Colors.black,
-                ),
-                children: <Widget>[
-                  ListTile(
-                    title: const Text(
-                      'Solar Development',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      //  navigationService.push(const WithdrawMoneyScreen());
-context.go('/products&services/solar-development');
-                      // Navigate or handle logic for withdrawing money
-                    },
-                  ),
-                  ListTile(
-                    title: const Text(
-                      'Energy Management Services',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      // Navigate or handle logic for viewing withdrawal list
-                      // navigationService
-                      //     .push(const WithdarwalListScreen());
-                      context.go('/products&services/energy-management');
-
-                    },
-                  ),
-                  ListTile(
-                    title: const Text(
-                      'Operation and Maintenance',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      // Navigate or handle logic for withdrawal settings
-                      // navigationService
-                      //     .push(const WithdrawalSettingScreen());
-                                            context.go('/products&services/operation&maintenance');
-
-                    },
-                  ),
-                  ListTile(
-                    title: const Text(
-                      'Solar Financing',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      // Navigate or handle logic for withdrawal settings
-                      // navigationService
-                      //     .push(const WithdrawalSettingScreen());
-                                            context.go('/products&services/solar-financing');
-
-                    },
-                  ),
-                ],
+                
               ),
              
                ListTile(
@@ -753,310 +423,477 @@ context.go('/products&services/solar-development');
             ],
           ),
         ),
-      ),
-        body: ListView(
-          controller: controllers,
-          children: [
-            ResponsiveWidget.isSmallScreen(
-                    context)
-                ? Container(
-                    height: 300,
-                    decoration:
-                        const BoxDecoration(
-                            image:
-                                DecorationImage(
-                                    fit: BoxFit
-                                        .cover,
-                                    colorFilter:
-                                        ColorFilter
-                                            .mode(
-                                      Colors
-                                          .black54,
-                                      BlendMode
-                                          .darken,
-                                    ),
-                                    image: AssetImage(
-                                        'assets/images/blog.jpg'))),
-                    child: Row(
-                      mainAxisAlignment:
-                          MainAxisAlignment
-                              .spaceBetween,
-                      children: [
-                        Expanded(
-                          flex: 5,
-                          child: Padding(
-                            padding:
-                                const EdgeInsets
-                                    .only(
-                                    left: 40,
-                                    top: 110),
-                            child: Column(
-                              crossAxisAlignment:
-                                  CrossAxisAlignment
-                                      .start,
-                              children: [
-                                TextReveal(
-                                  maxHeight: 80,
-                                  controller:
-                                      controller,
-                                  textOpacityAnimation:
-                                      textOpacityAnimation,
-                                  textRevealAnimation:
-                                      textRevealAnimation,
-                                  child:
-                                      const Text(
-                                    'Blogs & News Updates',
-                                    style: TextStyle(
-                                        fontSize:
-                                            22,
-                                        color: Colors
-                                            .white,
-                                        fontWeight:
-                                            FontWeight
-                                                .w800),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 18,
-                                ),
-                                
-                                const SizedBox(
-                                  height: 40,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        //const Expanded(flex: 9, child: FirstPageImage())
-                      ],
-                    ),
-                  )
-                : Container(
-                    height: 300,
-                    decoration:
-                        const BoxDecoration(
-                            image:
-                                DecorationImage(
-                                    fit: BoxFit
-                                        .cover,
-                                    colorFilter:
-                                        ColorFilter
-                                            .mode(
-                                      Colors
-                                          .black54,
-                                      BlendMode
-                                          .darken,
-                                    ),
-                                    image: AssetImage(
-                                        'assets/images/blog.jpg'))),
-                    child: Row(
-                      mainAxisAlignment:
-                          MainAxisAlignment
-                              .spaceBetween,
-                      children: [
-                        Expanded(
-                          flex: 5,
-                          child: Padding(
-                            padding:
-                                const EdgeInsets
-                                    .only(
-                                    left: 90,
-                                    top: 130),
-                            child: Column(
-                              crossAxisAlignment:
-                                  CrossAxisAlignment
-                                      .start,
-                              children: [
-                                TextReveal(
-                                  maxHeight: 110,
-                                  controller:
-                                      controller,
-                                  textOpacityAnimation:
-                                      textOpacityAnimation,
-                                  textRevealAnimation:
-                                      textRevealAnimation,
-                                  child:
-                                      const Text(
-                                    'Blogs & News Updates',
-                                    style: TextStyle(
-                                        fontSize:
-                                            45,
-                                        color: Colors
-                                            .white,
-                                        fontWeight:
-                                            FontWeight
-                                                .w800),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                
-                                const SizedBox(
-                                  height: 40,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        //const Expanded(flex: 9, child: FirstPageImage())
-                      ],
-                    ),
+      ) : null,
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            toolbarHeight: 90,
+          pinned: false,
+          floating: false,
+          snap: false,
+          expandedHeight: 300,
+          backgroundColor: Colors.transparent,
+            automaticallyImplyLeading: ResponsiveWidget.isSmallScreen(context)
+             ?true : false, // 👈 This hides the back button
+          leading: 
+          ResponsiveWidget.isSmallScreen(context)
+             ?
+          Builder(
+                  builder: (context) => IconButton(
+                    icon: const Icon(Iconsax.menu_1_outline, color:  Color(0xffffffff)),
+                    onPressed: () {
+                      Scaffold.of(context)
+                          .openDrawer(); // Opens the drawer using correct context
+                    },
                   ),
-            PreferredSize(
-              preferredSize: Size(
-                screenSize.width,
-                1000,
-              ),
-              child: Container(
-                color: const Color.fromARGB(
-                    255, 253, 249, 249),
-                height: 60,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.all(10),
-                  child: SingleChildScrollView(
-                    scrollDirection:
-                        Axis.horizontal,
+                ): null,
+          elevation: 0,
+          centerTitle: true,
+      title: ResponsiveWidget.isSmallScreen(context)
+             ?  InkWell(
+                          onTap: () {
+                                   context.go('/home');
+      
+                          },
+                          child: Image.asset(
+                            'assets/images/solevadlogo.png',
+                            scale: 5,
+                          ),
+                        ) :
+              Padding(
+                    padding: const EdgeInsets.all(5),
                     child: Row(
-                      crossAxisAlignment:
-                          CrossAxisAlignment
-                              .center,
-                      mainAxisAlignment:
-                          MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(
-                            width:
-                                screenSize.width /
-                                    70),
+                        SizedBox(width: screenSize.width / 70),
                         InkWell(
                           onTap: () {
-                            //  context.go('/Contact_us');
+                                   context.go('/home');
+      
                           },
-                          child: Column(
-                            mainAxisSize:
-                                MainAxisSize.min,
+                          child: Image.asset(
+                            'assets/images/solevadlogo.png',
+                            scale: 5,
+                          ),
+                        ),
+      
+                        // const Text(
+                        //   'Solevad Energy',
+                        //   style: TextStyle(
+                        //     color: Colors.white,
+                        //     fontSize: 20,
+                        //     fontWeight: FontWeight.w500,
+                        //     letterSpacing: 3,
+                        //   ),
+                        // ),
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(
-                                'HOME',
-                                style: TextStyle(
-                                    color: _isHovering[
-                                            6]
-                                        ? Colors.blue[
-                                            200]
-                                        : Colors
-                                            .black,
-                                    fontWeight:
-                                        FontWeight
-                                            .w400),
+                              SizedBox(width: screenSize.width / 12),
+                              InkWell(
+                                onHover: (value) {
+                                  setState(() {
+                                    value
+                                        ? _isHovering[0] = true
+                                        : _isHovering[0] = false;
+                                  });
+                                },
+                                onTap: () {
+                                   context.go('/home');
+                                },
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      'Home',
+                                      style: TextStyle(
+                                        color: _isHovering[0]
+                                            ? Colors.blue[200]
+                                            : Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 5),
+                                    Visibility(
+                                      maintainAnimation: true,
+                                      maintainState: true,
+                                      maintainSize: true,
+                                      visible: _isHovering[0],
+                                      child: Container(
+                                        height: 2,
+                                        width: 20,
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              SizedBox(width: screenSize.width / 20),
+                              InkWell(
+                                onHover: (value) {
+                                  setState(() {
+                                    value
+                                        ? _isHovering[1] = true
+                                        : _isHovering[1] = false;
+                                  });
+                                },
+                                onTap: () {
+                                  context.go('/about-us');
+                                },
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      'About',
+                                      style: TextStyle(
+                                        color: _isHovering[1]
+                                            ? Colors.blue[200]
+                                            : Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 5),
+                                    Visibility(
+                                      maintainAnimation: true,
+                                      maintainState: true,
+                                      maintainSize: true,
+                                      visible: _isHovering[1],
+                                      child: Container(
+                                        height: 2,
+                                        width: 20,
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              SizedBox(width: screenSize.width / 20),
+                              InkWell(
+                                onHover: (value) {
+                                  setState(() {
+                                    value
+                                        ? _isHovering[2] = true
+                                        : _isHovering[2] = false;
+                                  });
+                                },
+                                onTap: () {
+                                  context.go('/services');
+                                },
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      'Services',
+                                      style: TextStyle(
+                                        color: _isHovering[2]
+                                            ? Colors.blue[200]
+                                            : Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 5),
+                                    Visibility(
+                                      maintainAnimation: true,
+                                      maintainState: true,
+                                      maintainSize: true,
+                                      visible: _isHovering[2],
+                                      child: Container(
+                                        height: 2,
+                                        width: 20,
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              SizedBox(width: screenSize.width / 20),
+      
+                              InkWell(
+                                onHover: (value) {
+                                  setState(() {
+                                    value
+                                        ? _isHovering[3] = true
+                                        : _isHovering[3] = false;
+                                  });
+                                },
+                                onTap: () {
+                                  context.go('/contact_us');
+                                },
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      'Contact Us',
+                                      style: TextStyle(
+                                        color: _isHovering[3]
+                                            ? Colors.blue[200]
+                                            : Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+      
+                                      ),
+                                    ),
+                                    const SizedBox(height: 5),
+                                    Visibility(
+                                      maintainAnimation: true,
+                                      maintainState: true,
+                                      maintainSize: true,
+                                      visible: _isHovering[3],
+                                      child: Container(
+                                        height: 2,
+                                        width: 20,
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              SizedBox(width: screenSize.width / 20),
+                              InkWell(
+                                onHover: (value) {
+                                  setState(() {
+                                    value
+                                        ? _isHovering[4] = true
+                                        : _isHovering[4] = false;
+                                  });
+                                },
+                                onTap: () {
+                                  context.go('/blog');
+                                },
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      'Blog',
+                                      style: TextStyle(
+                                        color: _isHovering[4]
+                                            ? Colors.blue[200]
+                                            : Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                             fontSize: 16,
+      
+                                      ),
+                                    ),
+                                    const SizedBox(height: 5),
+                                    Visibility(
+                                      maintainAnimation: true,
+                                      maintainState: true,
+                                      maintainSize: true,
+                                      visible: _isHovering[4],
+                                      child: Container(
+                                        height: 2,
+                                        width: 20,
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ],
                           ),
                         ),
-                         SizedBox(
-                            width:
-                                screenSize.width /
-                                    40),
-                        const VerticalDivider(),
-                        SizedBox(
-                            width:
-                                screenSize.width /
-                                    40),
-                        const Column(
-                          mainAxisSize:
-                              MainAxisSize.min,
-                          children: [
-                            Text(
-                              'SOLEVAD BLOGS',
-                              style: TextStyle(
-                                  color: Colors
-                                      .black,
-                                  fontWeight:
-                                      FontWeight
-                                          .w400),
+                        // IconButton(
+                        //   icon: const Icon(Icons.brightness_6),
+                        //   splashColor: Colors.transparent,
+                        //   highlightColor: Colors.transparent,
+                        //   color: Colors.white,
+                        //   onPressed: () {
+                        //     EasyDynamicTheme.of(context).changeTheme();
+                        //   },
+                        // ),
+                        SizedBox(width: screenSize.width / 20),
+                        ElevatedButton(
+                          onPressed: () {
+                            //context.go('/Our_Services');
+                          context.go('/book-consultation');
+                          },
+                          style: ElevatedButton.styleFrom(
+                             shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(1),
                             ),
-                          ],
+                            fixedSize: const Size(170, 45),
+                            backgroundColor: const Color(0xff4779A3),
+                          ),
+                          child: const Text(
+                            'Get Started',
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Color(0xffffffff),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: screenSize.width / 20,
                         ),
                       ],
                     ),
                   ),
-                ),
+          flexibleSpace:  FlexibleSpaceBar(
+            background: Stack(
+              fit: StackFit.expand,
+              children: [
+                  ResponsiveWidget.isSmallScreen(
+                      context)
+                  ? Container(
+                      height: 300,
+                      decoration:
+                          const BoxDecoration(
+                              image:
+                                  DecorationImage(
+                                      fit: BoxFit
+                                          .cover,
+                                      colorFilter:
+                                          ColorFilter
+                                              .mode(
+                                        Colors
+                                            .black54,
+                                        BlendMode
+                                            .darken,
+                                      ),
+                                      image: AssetImage(
+                                          'assets/images/blogs.jpg'))),
+                      child: Row(
+                        mainAxisAlignment:
+                            MainAxisAlignment
+                                .spaceBetween,
+                        children: [
+                          Expanded(
+                            flex: 5,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets
+                                      .only(
+                                      left: 40,
+                                      top: 150),
+                              child: Column(
+                                crossAxisAlignment:
+                                    CrossAxisAlignment
+                                        .start,
+                                children: [
+                                DefaultTextStyle(
+        style: const TextStyle(
+          fontFamily: 'Mulish',
+         fontSize: 25,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+        ),
+        child: Center(
+          child: AnimatedTextKit(
+            animatedTexts: [
+              TypewriterAnimatedText(
+              'Blogs & News Update',
+                speed: const Duration(milliseconds: 100),
+                cursor: '|'
               ),
-            ),
-            const Divider(),
-           ResponsiveWidget.isSmallScreen(
-                context)
-            ? Container(
-              margin: const EdgeInsets.only(
-                left: 10, right: 10,
-              ),
-              child:  const Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                   SizedBox(
-                      height: 15,
-                    ),
-                Center(
-                              child: Text(
-                                                'No Recent Articles',
-                                                style: TextStyle(
-                                                  color: Color(
-                                                      0xff32CD32),
-                                                  fontSize: 20,
-                                                  fontWeight:
-                                                      FontWeight
-                                                          .bold,
-                                                ),
-                                              ),
+            ],
+            totalRepeatCount: 1,
+            pause: const Duration(milliseconds: 1000),
+            displayFullTextOnTap: true,
+            stopPauseOnTap: true,
+          ),
+        ),
+      ),
+                                 
+                                ],
+                              ),
                             ),
-                              SizedBox(
-                      height: 15,
-                    ),
-                   
-
-                ],
-              ),
-            )
-            : SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Container(
-              
-                child:  const Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 40,
-                    ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: 500
-                  ),
-                  child: Text(
-                                    'No Recent Articles',
-                                    style: TextStyle(
-                                      color: Color(
-                                          0xff32CD32),
-                                      fontSize: 30,
-                                      fontWeight:
-                                          FontWeight
-                                              .bold,
-                                    ),
-                                  ),
-                ),
-                              SizedBox(
-                      height: 40,
-                    ),
-                    
-                  ],
-                ),
-              ),
+                          ),
+                          //const Expanded(flex: 9, child: FirstPageImage())
+                        ],
+                      ),
+                    )
+                  : Container(
+                      height: 200,
+                      decoration:
+                          const BoxDecoration(
+                              image:
+                                  DecorationImage(
+                                      fit: BoxFit
+                                          .cover,
+                                      colorFilter:
+                                          ColorFilter
+                                              .mode(
+                                        Colors
+                                            .black54,
+                                        BlendMode
+                                            .darken,
+                                      ),
+                                      image: AssetImage(
+                                          'assets/images/blogs.jpg'))),
+                      child: Row(
+                        mainAxisAlignment:
+                            MainAxisAlignment
+                                .spaceBetween,
+                        children: [
+                          Expanded(
+                            flex: 5,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets
+                                      .only(
+                                      left: 90,
+                                      top: 130),
+                              child: Column(
+                                crossAxisAlignment:
+                                    CrossAxisAlignment
+                                        .start,
+                                children: [
+                                DefaultTextStyle(
+        style: const TextStyle(
+          fontFamily: 'Mulish',
+         fontSize: 45,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+        ),
+        child: AnimatedTextKit(
+          animatedTexts: [
+            TypewriterAnimatedText(
+              'Blogs & News Update',
+              speed: const Duration(milliseconds: 100),
+              cursor: '|'
             ),
-            const SizedBox(
-              height: 100.0,
-            ),
-            const BottomBar(),
           ],
-        ));
+          totalRepeatCount: 2,
+          repeatForever: true,
+          pause: const Duration(milliseconds: 10000),
+          displayFullTextOnTap: true,
+          stopPauseOnTap: true,
+        ),
+      ),
+                                  
+                                ],
+                              ),
+                            ),
+                          ),
+                          //const Expanded(flex: 9, child: FirstPageImage())
+                        ],
+                      ),
+                    ),
+              ],
+            ),
+          ),
+        ),
+      
+         // Sliver content section
+        const SliverToBoxAdapter(
+          child: Column(
+            children: [
+                      Blogs(),
+                      SizedBox(),
+                 //  Call(),
+          BottomBar(),
+            ]
+          ),
+        )
+               
+        ],
+      ),
+    );
   }
 
   bool termsAccepted = false;

@@ -64,7 +64,7 @@ class _NinthSectionState extends State<NinthSection> {
          ElevatedButton(
                         onPressed: () {
                           //context.go('/Our_Services');
-                          context.go('/about-us/our-mission&vision&values');
+                          context.go('/about-us');
                         },
                         style: ElevatedButton.styleFrom(
                            shape: RoundedRectangleBorder(

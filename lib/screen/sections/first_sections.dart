@@ -158,7 +158,7 @@ class _FirstSectionState extends State<FirstSection>
                 const SizedBox(height: 40),
                 ElevatedButton(
                   onPressed: () {
-                    context.go('/products&services/solar-development');
+                          context.go('/about-us');
                   },
                   style: ElevatedButton.styleFrom(
                      shape: RoundedRectangleBorder(
@@ -261,7 +261,7 @@ class _FirstSectionState extends State<FirstSection>
                 const SizedBox(height: 40),
                 ElevatedButton(
                   onPressed: () {
-                    context.go('/products&services/solar-development');
+                          context.go('/about-us');
                   },
                   style: ElevatedButton.styleFrom(
                      shape: RoundedRectangleBorder(

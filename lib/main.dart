@@ -39,7 +39,7 @@ void main() {
           },
         ),
         GoRoute(
-          path: '/products&services/solar-development',
+          path: '/services',
           builder: (context, GoRouterState state) {
             return const SolarScreen();
           },
@@ -63,7 +63,7 @@ void main() {
           },
         ),
           GoRoute(
-          path: '/about-us/our-team',
+          path: '/about-us',
           builder: (context, GoRouterState state) {
             return const OurTeamScreen();
           },
@@ -632,7 +632,11 @@ int? _hoveredIndex; // null when nothing is hovered
                   ),
                 ),
               ),
-              ExpansionTile(
+               ListTile(
+                onTap: () {
+                                                  context.go('/about-us');
+
+                },
                 leading: const Icon(
                   Iconsax.profile_2user_bold,
                   size: 22,
@@ -645,144 +649,26 @@ int? _hoveredIndex; // null when nothing is hovered
                     color: Colors.black,
                   ),
                 ),
-                trailing: const Icon(
-                  Iconsax.arrow_down_1_outline,
-                  size: 22,
-                  color: Colors.black,
-                ),
-       
-                children: <Widget>[
-                  ListTile(
-                    title: const Text(
-                      'Our Team',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      //  navigationService.push(const WithdrawMoneyScreen());
-                                            context.go('/about-us/our-team');
-
-                      // Navigate or handle logic for withdrawing money
-                    },
-                  ),
-                  ListTile(
-                    title: const Text(
-                      'Our Vision, Mission & Values',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      // Navigate or handle logic for viewing withdrawal list
-                      // navigationService
-                      //     .push(const WithdarwalListScreen());
-                                            context.go('/about-us/our-mission&vision&values');
-
-                    },
-                  ),
-                  ListTile(
-                    title: const Text(
-                      'Careers at Solevad',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      // Navigate or handle logic for withdrawal settings
-                      // navigationService
-                      //     .push(const WithdrawalSettingScreen());
-                      context.go('/about-us/careers');
-
-                    },
-                  ),
-                ],
+               
               ),
-              ExpansionTile(
+              ListTile(
+                onTap: () {
+                                                  context.go('/services');
+
+                },
                 leading: const Icon(
                   Iconsax.bag_2_bold,
                   size: 22,
                   color: Color(0xff4779A3),
                 ),
                 title: const Text(
-                  'Products & Services',
+                  'Services',
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.black,
                   ),
                 ),
-                trailing: const Icon(
-                  Iconsax.arrow_down_1_outline,
-                  size: 22,
-                  color: Colors.black,
-                ),
-                children: <Widget>[
-                  ListTile(
-                    title: const Text(
-                      'Solar Development',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      //  navigationService.push(const WithdrawMoneyScreen());
-context.go('/products&services/solar-development');
-                      // Navigate or handle logic for withdrawing money
-                    },
-                  ),
-                  ListTile(
-                    title: const Text(
-                      'Energy Management Services',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      // Navigate or handle logic for viewing withdrawal list
-                      // navigationService
-                      //     .push(const WithdarwalListScreen());
-                      context.go('/products&services/energy-management');
-
-                    },
-                  ),
-                  ListTile(
-                    title: const Text(
-                      'Operation and Maintenance',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      // Navigate or handle logic for withdrawal settings
-                      // navigationService
-                      //     .push(const WithdrawalSettingScreen());
-                                            context.go('/products&services/operation&maintenance');
-
-                    },
-                  ),
-                  ListTile(
-                    title: const Text(
-                      'Solar Financing',
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      // Navigate or handle logic for withdrawal settings
-                      // navigationService
-                      //     .push(const WithdrawalSettingScreen());
-                                            context.go('/products&services/solar-financing');
-
-                    },
-                  ),
-                ],
+                
               ),
              
                ListTile(

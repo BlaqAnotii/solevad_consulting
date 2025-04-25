@@ -16,28 +16,38 @@ class _FAQPageState extends State<FAQPage> {
   int? _expandedIndex;
 
   final List<FAQ> faqList = [
-    FAQ(
-      question: "What does Solevad Energy do?",
-      answer:
-          "We help Nigerians find and finance great solar products. Our experts negotiate pricing, warranty, payment plans and handle the process end-to-end on your behalf. 150+ solar companies and dozens of financiers nationwide use our services to get customers and support.",
-    ),
-    FAQ(
-      question: "Can my solar system switch between inverter and grid supply?",
-      answer: "Yes, modern solar systems can switch seamlessly between inverter and grid supply depending on configuration.",
-    ),
-    FAQ(
-      question: "How soon can I access financing?",
-      answer: "Financing can usually be accessed within a few business days after successful application and approval.",
-    ),
-    FAQ(
-      question: "Where is your office?",
-      answer: "Our main office is located in Lagos, Nigeria.",
-    ),
-    FAQ(
-      question: "Is the estimated quote what I am paying for the solar system?",
-      answer: "Yes, unless changes are made to your system design or options.",
-    ),
-  ];
+  FAQ(
+    question: "What does Solevad Consulting specialize in?",
+    answer:
+        "Solevad Consulting provides expert services in Sustainable Infrastructure, Renewable Energy Solutions, Energy Management Consulting, Energy Procurement, and Real Estate Consulting Services.",
+  ),
+  FAQ(
+    question: "What is Sustainable Infrastructure development?",
+    answer:
+        "It involves creating eco-friendly and resilient structures that balance environmental, economic, and social sustainability. Solevad Consulting designs infrastructure solutions that meet today's needs without compromising future generations.",
+  ),
+  FAQ(
+    question: "How can Solevad Consulting assist with Renewable Energy projects?",
+    answer:
+        "We offer tailored renewable energy solutions including solar, wind, and hybrid systems — from feasibility studies to full project execution and support.",
+  ),
+  FAQ(
+    question: "What is Energy Management Consulting?",
+    answer:
+        "We help organizations optimize their energy use through audits, strategies, and technologies that reduce costs and promote sustainable operations.",
+  ),
+  FAQ(
+    question: "Can Solevad Consulting assist with Energy Procurement?",
+    answer:
+        "Yes, we guide businesses in sourcing reliable, cost-effective energy solutions, helping them negotiate contracts and manage supplier relationships efficiently.",
+  ),
+  FAQ(
+    question: "Does Solevad Consulting offer Real Estate services?",
+    answer:
+        "Yes, our Real Estate Consulting Services help clients make informed investment decisions, optimize assets, and navigate complex property markets with confidence.",
+  ),
+];
+
 
   @override
   Widget build(BuildContext context) {

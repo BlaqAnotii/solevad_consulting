@@ -163,7 +163,8 @@ title: ResponsiveWidget.isSmallScreen(context)
                                 ],
                               ),
                             ),
-                            SizedBox(width: screenSize.width / 20),InkWell(
+                            SizedBox(width: screenSize.width / 20),
+                            InkWell(
                               onHover: (value) {
                                 setState(() {
                                   value
@@ -172,7 +173,7 @@ title: ResponsiveWidget.isSmallScreen(context)
                                 });
                               },
                               onTap: () {
-                                context.go('/home');
+                                context.go('/about-us');
                               },
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -212,7 +213,7 @@ title: ResponsiveWidget.isSmallScreen(context)
                                 });
                               },
                               onTap: () {
-                                context.go('/home');
+                                context.go('/services');
                               },
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -341,7 +342,7 @@ title: ResponsiveWidget.isSmallScreen(context)
                       ElevatedButton(
                         onPressed: () {
                           //context.go('/Our_Services');
-                          context.go('/contact_us');
+                          context.go('/book-consultation');
                         },
                         style: ElevatedButton.styleFrom(
                            shape: RoundedRectangleBorder(

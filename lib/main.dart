@@ -45,19 +45,19 @@ void main() {
           },
         ),
          GoRoute(
-          path: '/products&services/energy-management',
+          path: '/services/energy-consulting',
           builder: (context, GoRouterState state) {
             return const EnergyScreen();
           },
         ),
        GoRoute(
-          path: '/products&services/operation&maintenance',
+          path: '/services/community-development',
           builder: (context, GoRouterState state) {
             return const ProjectScreen();
           },
         ),
          GoRoute(
-          path: '/products&services/solar-financing',
+          path: '/services/business-consulting',
           builder: (context, GoRouterState state) {
             return const ProductScreen();
           },
@@ -595,6 +595,7 @@ int? _hoveredIndex; // null when nothing is hovered
          ? 
       
       Drawer(
+    
         child: Container(
           color: const Color(0xfffffffff),
           child: Column(
@@ -651,11 +652,7 @@ int? _hoveredIndex; // null when nothing is hovered
                 ),
                
               ),
-              ListTile(
-                onTap: () {
-                                                  context.go('/services');
-
-                },
+              ExpansionTile(
                 leading: const Icon(
                   Iconsax.bag_2_bold,
                   size: 22,
@@ -668,8 +665,82 @@ int? _hoveredIndex; // null when nothing is hovered
                     color: Colors.black,
                   ),
                 ),
-                
+                trailing: const Icon(
+                  Iconsax.arrow_down_1_outline,
+                  size: 22,
+                  color: Colors.black,
+                ),
+                children: <Widget>[
+                 
+                  ListTile(
+                    title: const Text(
+                      'Energy Consulting',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                      ),
+                    ),
+                    onTap: () {
+                      // Navigate or handle logic for viewing withdrawal list
+                      // navigationService
+                      //     .push(const WithdarwalListScreen());
+                      context.go('/services/energy-consulting');
+
+                    },
+                  ),
+                  ListTile(
+                    title: const Text(
+                      'Community Development',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                      ),
+                    ),
+                    onTap: () {
+                      // Navigate or handle logic for withdrawal settings
+                      // navigationService
+                      //     .push(const WithdrawalSettingScreen());
+                                            context.go('/services/community-development');
+
+                    },
+                  ),
+                  ListTile(
+                    title: const Text(
+                      'Business Consulting',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                      ),
+                    ),
+                    onTap: () {
+                      // Navigate or handle logic for viewing withdrawal list
+                      // navigationService
+                      //     .push(const WithdarwalListScreen());
+                      context.go('/services/business-consulting');
+
+                    },
+                  ),
+                ],
               ),
+              // ListTile(
+              //   onTap: () {
+              //                                     context.go('/services');
+
+              //   },
+              //   leading: const Icon(
+              //     Iconsax.bag_2_bold,
+              //     size: 22,
+              //     color: Color(0xff4779A3),
+              //   ),
+              //   title: const Text(
+              //     'Services',
+              //     style: TextStyle(
+              //       fontSize: 15,
+              //       color: Colors.black,
+              //     ),
+              //   ),
+                
+              // ),
              
                ListTile(
                 onTap: () {
@@ -711,7 +782,7 @@ int? _hoveredIndex; // null when nothing is hovered
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Text(
-                    'Copyright © 2024 | Solevad Energy',
+                    'Copyright © 2024 | Solevad Consulting',
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 13,

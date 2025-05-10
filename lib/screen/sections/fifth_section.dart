@@ -56,13 +56,9 @@ class _FifthSectionState extends State<FifthSection>
 
     return ResponsiveWidget.isSmallScreen(context)
         ? Container(
-            height: 600,
+            height: 500,
      decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/black.jpg',),
-                    fit: BoxFit.cover,
-                   
-                  ),
+ color: Colors.white,
                 ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -72,7 +68,7 @@ class _FifthSectionState extends State<FifthSection>
             style: const TextStyle(
           fontFamily: 'Mulish',
          fontSize: 22,
-                    color: Colors.white,
+ color: Color(0xff32CD32),
                     fontWeight: FontWeight.w800,
         ),
             child: AnimatedTextKit(
@@ -113,7 +109,7 @@ class _FifthSectionState extends State<FifthSection>
                                             style: const TextStyle(
                                               fontSize: 16,
                                               fontStyle: FontStyle.italic,
-                                              color: Colors.white,
+                                              color: Colors.black,
                                             ),
                                             textAlign: TextAlign.center,
                                           ),
@@ -123,7 +119,7 @@ class _FifthSectionState extends State<FifthSection>
                                             style: const TextStyle(
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold,
-              color: Colors.white70,
+              color: Colors.grey,
                                             ),
                                           ),
                                           Text(
@@ -147,11 +143,7 @@ class _FifthSectionState extends State<FifthSection>
         : Container(
             height: 400,
            decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/black.jpg',),
-                    fit: BoxFit.cover,
-                   
-                  ),
+               color: Colors.white
                 ),
                   child:   Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -161,7 +153,7 @@ class _FifthSectionState extends State<FifthSection>
             style: const TextStyle(
           fontFamily: 'Mulish',
          fontSize: 45,
-                    color: Colors.white,
+ color: Color(0xff32CD32),
                     fontWeight: FontWeight.w800,
         ),
             child: AnimatedTextKit(
@@ -203,7 +195,7 @@ class _FifthSectionState extends State<FifthSection>
                                             style: const TextStyle(
                                               fontSize: 18,
                                               fontStyle: FontStyle.italic,
-                                              color: Colors.white,
+                                              color: Colors.black,
                                             ),
                                             textAlign: TextAlign.center,
                                           ),
@@ -213,7 +205,7 @@ class _FifthSectionState extends State<FifthSection>
                                             style: const TextStyle(
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold,
-              color: Colors.white70,
+              color: Colors.grey,
                                             ),
                                           ),
                                           Text(

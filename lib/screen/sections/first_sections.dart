@@ -98,7 +98,7 @@ class _FirstSectionState extends State<FirstSection>
     return ResponsiveWidget.isSmallScreen(context)
           ? 
            Container(
-      height: 600,
+      height: 530,
        width: double.infinity,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
@@ -116,66 +116,59 @@ class _FirstSectionState extends State<FirstSection>
 
            // Static Text on top
           Positioned(
-            left: 90,
-            top: 130,
+            left: 50,
+            top: 220,
             right: 50,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                  DefaultTextStyle(
         style: const TextStyle(
           fontFamily: 'Mulish',
-         fontSize: 25,
+         fontSize: 28,
                     color: Colors.white,
                     fontWeight: FontWeight.w800,
         ),
-        child: AnimatedTextKit(
-          animatedTexts: [
-            TypewriterAnimatedText(
-              'Connecting businesses, ideas and people for greater impact',
-              speed: const Duration(milliseconds: 100),
-              cursor: '|'
+        child: Center(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+    constraints: const BoxConstraints(maxWidth: 950),
+            child: AnimatedTextKit(
+              animatedTexts: [
+                TypewriterAnimatedText(
+                  'Connecting businesses, ideas & people for greater impact',
+                  speed: const Duration(milliseconds: 100),
+                  textAlign: TextAlign.center,
+                  cursor: '|'
+                ),
+              ],
+              totalRepeatCount: 1,
+              pause: const Duration(milliseconds: 1000),
+              displayFullTextOnTap: true,
+              stopPauseOnTap: true,
             ),
-          ],
-          totalRepeatCount: 1,
-          pause: const Duration(milliseconds: 1000),
-          displayFullTextOnTap: true,
-          stopPauseOnTap: true,
+          ),
         ),
       ),
               
                 const SizedBox(height: 20),
-
-               
-                const Text(
-                  'Solevad Consulting offers human-centered designs for Sustainable Infrastructural Development and data-driven solutions for Business Development and Management.',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 40),
-                ElevatedButton(
-                  onPressed: () {
-                          context.go('/about-us');
-                  },
-                  style: ElevatedButton.styleFrom(
-                     shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(1),
-                          ),
-                    fixedSize: const Size(165, 45),
-                    backgroundColor: Colors.white,
-                  ),
-                  child: const Text(
-                    'Learn more',
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+       Center(
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+    constraints: const BoxConstraints(maxWidth: 1000), // Constrain width for better block layout
+    child: Text(
+      'Solevad Consulting specializes in human-centered designs that drive sustainable in frastructural development and provide data driven solutions for enhancing business operations.',
+      textAlign: TextAlign.justify, // This aligns both edges
+      style: TextStyle(
+        fontSize: screenSize.width * 0.028, // Adjusted for readability
+        color: Colors.white,
+        fontWeight: FontWeight.w500,
+      ),
+    ),
+  ),
+),
+              
+              
               ],
             ),
           ),
@@ -214,7 +207,7 @@ class _FirstSectionState extends State<FirstSection>
                     ),
                   ),
                 ),
-      height: 500,
+      height: 700,
       child: Stack(
         children: [
          
@@ -222,10 +215,10 @@ class _FirstSectionState extends State<FirstSection>
             // Static Text on top
           Positioned(
             left: 90,
-            top: 130,
+            top: 190,
             right: 50,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 DefaultTextStyle(
         style: const TextStyle(
@@ -234,51 +227,46 @@ class _FirstSectionState extends State<FirstSection>
                     color: Colors.white,
                     fontWeight: FontWeight.w800,
         ),
-        child: AnimatedTextKit(
-          animatedTexts: [
-            TypewriterAnimatedText(
-              'Connecting businesses, ideas and people\nfor greater impact',
-              speed: const Duration(milliseconds: 100),
-              cursor: '|'
+        child: Center(
+          child: Container(
+             padding: const EdgeInsets.symmetric(horizontal: 24.0),
+    constraints: const BoxConstraints(maxWidth: 1000),
+            child: AnimatedTextKit(
+              animatedTexts: [
+                TypewriterAnimatedText(
+                  'Connecting businesses, ideas and people for greater impact',
+                                    textAlign: TextAlign.center,
+            
+                  speed: const Duration(milliseconds: 100),
+                  cursor: '|'
+                ),
+              ],
+              totalRepeatCount: 2,
+              repeatForever: true,
+              pause: const Duration(milliseconds: 10000),
+              displayFullTextOnTap: true,
+              stopPauseOnTap: true,
             ),
-          ],
-          totalRepeatCount: 2,
-          repeatForever: true,
-          pause: const Duration(milliseconds: 10000),
-          displayFullTextOnTap: true,
-          stopPauseOnTap: true,
+          ),
         ),
       ),
                 const SizedBox(height: 20),
-                const Text(
-                  'Solevad Consulting offers human-centered designs for Sustainable Infrastructural Development\nand data-driven solutions for Business Development and Management.',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 40),
-                ElevatedButton(
-                  onPressed: () {
-                          context.go('/about-us');
-                  },
-                  style: ElevatedButton.styleFrom(
-                     shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(1),
-                          ),
-                    fixedSize: const Size(170, 45),
-                    backgroundColor: Colors.white,
-                  ),
-                  child: const Text(
-                    'Learn more',
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+              
+                   Center(
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+    constraints: const BoxConstraints(maxWidth: 1000), // Constrain width for better block layout
+    child: Text(
+      'Solevad Consulting specializes in human-centered designs that drive sustainable infrastructural development and provide data driven solutions for enhancing business operations.',
+      textAlign: TextAlign.justify, // This aligns both edges
+      style: TextStyle(
+        fontSize: screenSize.width * 0.018, // Adjusted for readability
+        color: Colors.white,
+        fontWeight: FontWeight.w500,
+      ),
+    ),
+  ),
+),
               ],
             ),
           ),

@@ -17,36 +17,77 @@ class _FAQPageState extends State<FAQPage> {
 
   final List<FAQ> faqList = [
   FAQ(
-    question: "What does Solevad Consulting specialize in?",
+    question: "What services does Solevad Consulting provide?",
     answer:
-        "Solevad Consulting provides expert services in Sustainable Infrastructure, Renewable Energy Solutions, Energy Management Consulting, Energy Procurement, and Real Estate Consulting Services.",
+        "Solevad Consulting offers specialized solutions in Energy Consulting, Renewable Energy Development, Technical Asset Management, Energy Brokering, Utility Bill Monitoring, Measurement & Verification, Compliance Reporting, Energy Audits, Community Development, and Business Consulting.",
   ),
   FAQ(
-    question: "What is Sustainable Infrastructure development?",
+    question: "How does Solevad Consulting support Renewable Energy Development?",
     answer:
-        "It involves creating eco-friendly and resilient structures that balance environmental, economic, and social sustainability. Solevad Consulting designs infrastructure solutions that meet today's needs without compromising future generations.",
+        "We guide organizations through every stage of renewable energy adoption — from feasibility studies to full implementation. Our expertise spans solar, battery, and hybrid technologies, ensuring a smooth and effective transition to clean energy.",
   ),
   FAQ(
-    question: "How can Solevad Consulting assist with Renewable Energy projects?",
+    question: "What is included in Solevad’s Energy Consulting services?",
     answer:
-        "We offer tailored renewable energy solutions including solar, wind, and hybrid systems — from feasibility studies to full project execution and support.",
+        "Our Energy Consulting services cover renewable energy strategy, detailed contract reviews, energy audits, and Measurement & Verification (M&V). We help optimize energy usage and ensure sustainable management practices are in place.",
   ),
   FAQ(
-    question: "What is Energy Management Consulting?",
+    question: "Can Solevad Consulting manage our energy systems over time?",
     answer:
-        "We help organizations optimize their energy use through audits, strategies, and technologies that reduce costs and promote sustainable operations.",
+        "Yes, through our Technical Asset Management services, we offer ongoing support including maintenance, performance tracking, and troubleshooting to ensure your energy systems perform efficiently and deliver long-term value.",
   ),
   FAQ(
-    question: "Can Solevad Consulting assist with Energy Procurement?",
+    question: "What does Energy Brokering involve at Solevad Consulting?",
     answer:
-        "Yes, we guide businesses in sourcing reliable, cost-effective energy solutions, helping them negotiate contracts and manage supplier relationships efficiently.",
+        "We help businesses secure cost-effective energy contracts by leveraging our market insights and partnerships. Our brokering service ensures you get competitive energy rates that align with your sustainability goals and budget.",
   ),
   FAQ(
-    question: "Does Solevad Consulting offer Real Estate services?",
+    question: "How does Solevad help with Utility Bill Monitoring?",
     answer:
-        "Yes, our Real Estate Consulting Services help clients make informed investment decisions, optimize assets, and navigate complex property markets with confidence.",
+        "Our utility bill monitoring services analyze your consumption trends to identify inefficiencies, detect billing errors, and offer recommendations to reduce costs and improve energy management.",
+  ),
+  FAQ(
+    question: "What is Measurement & Verification (M&V), and why is it important?",
+    answer:
+        "Measurement & Verification (M&V) is used to assess the success of energy-saving initiatives. At Solevad, we provide precise tracking and validation to ensure your efficiency measures deliver real, measurable results.",
+  ),
+  FAQ(
+    question: "Does Solevad provide support with energy compliance?",
+    answer:
+        "Absolutely. We help you stay compliant with local and global energy regulations through accurate, timely compliance reporting that mitigates risks and ensures industry standards are met.",
+  ),
+  FAQ(
+    question: "What are Energy Audits, and how do they benefit my business?",
+    answer:
+        "Energy Audits help identify inefficiencies in your energy use. Our team conducts comprehensive assessments to provide actionable insights for improving performance and reducing operational costs.",
+  ),
+  FAQ(
+    question: "How does Solevad Consulting contribute to Community Development?",
+    answer:
+        "We engage in educational initiatives, workforce development, and community advocacy. Our focus is on promoting equity, amplifying local voices, and supporting sustainable projects that reflect community values.",
+  ),
+  FAQ(
+    question: "What is Equitable Workforce Development?",
+    answer:
+        "Solevad’s workforce development programs focus on providing inclusive training and skill-building opportunities, ensuring economic mobility and representation for all members of the community.",
+  ),
+  FAQ(
+    question: "How does Solevad promote Community Engagement and Advocacy?",
+    answer:
+        "We collaborate with local stakeholders to identify community needs and advocate for inclusive development. Our efforts aim to empower underrepresented groups and ensure their voices influence meaningful change.",
+  ),
+  FAQ(
+    question: "Does Solevad Consulting offer Business Consulting services?",
+    answer:
+        "Yes, we help businesses improve operations through strategic planning, process optimization, technology integration, and performance enhancement — all tailored to support sustainable growth.",
+  ),
+  FAQ(
+    question: "What is involved in Solevad’s Strategic Planning support?",
+    answer:
+        "We help businesses define long-term goals and strategies through data-driven analysis, risk assessment, and actionable roadmaps that foster resilience and growth.",
   ),
 ];
+
 
 
   @override

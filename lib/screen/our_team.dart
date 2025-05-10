@@ -24,6 +24,164 @@ class OurTeamScreen extends StatefulWidget {
 
 class _OurTeamScreenState extends State<OurTeamScreen> with SingleTickerProviderStateMixin {
  
+  OverlayEntry? _overlayEntry;
+  bool _isSubMenuOpen = false;
+  int? _hoveredMenuIndex;
+
+ // List of submenu items with routes
+final Map<int, List<Map<String, String>>> _subMenuItems = {
+ 
+  0: [
+    {"title": "Energy Consulting", "route": "/services/energy-consulting"},
+    {"title": "Community Development", "route": "/services/community-development"},
+    {"title": "Business Consulting", "route": "/services/business-consulting"},
+  ],
+};
+
+int? _hoveredIndex; // null when nothing is hovered
+
+bool hover = false;
+  /// Show submenu on hover
+  void _showSubMenu(BuildContext context, int index, Offset position) {
+    _removeOverlay(); // Remove existing submenu first
+
+    _overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        left: position.dx,
+        top: position.dy + 30,
+        child: MouseRegion(
+          onEnter: (_) => _isSubMenuOpen = true, // Keep submenu open
+          onExit: (_) {
+            Future.delayed(const Duration(milliseconds: 300), () {
+              if (!_isSubMenuOpen) _removeOverlay();
+            });
+          },
+          child: Material(
+            color: Colors.transparent,
+            child: Container(
+              width: 450,
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(1),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 5,
+                    spreadRadius: 2,
+                  ),
+                ],
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+               children: _subMenuItems[index]!.asMap().entries.map((entry) {
+  int itemIndex = entry.key;
+  Map<String, String> item = entry.value;
+
+  return MouseRegion(
+    onEnter: (_) {
+      setState(() {
+        _hoveredIndex = itemIndex;
+      });
+    },
+    onExit: (_) {
+      setState(() {
+        _hoveredIndex = null;
+      });
+    },
+   
+    child: InkWell(
+  
+      onTap: () {
+        _removeOverlay(); // Close menu
+        context.go(item["route"]!);
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        child: Column(
+          children: [
+            Text(
+              item["title"]!,
+              style: TextStyle(
+                color: _hoveredIndex == itemIndex ? Colors.blue[200] : Colors.black,
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+               
+          ],
+        ),
+      ),
+    ),
+  );
+}).toList(),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+
+    Overlay.of(context).insert(_overlayEntry!);
+  }
+
+  /// Removes overlay menu
+  void _removeOverlay() {
+    _overlayEntry?.remove();
+    _overlayEntry = null;
+    _isSubMenuOpen = false;
+  }
+
+  /// Main menu item widget
+  Widget _buildMenuItem(BuildContext context, String title, int index) {
+                var screenSize = MediaQuery.of(context).size;
+
+    return MouseRegion(
+      onEnter: (event) {
+        setState(() {
+          _hoveredMenuIndex = index;
+        });
+        _showSubMenu(context, index, event.position);
+      },
+      onExit: (_) {
+        Future.delayed(const Duration(milliseconds: 300), () {
+          if (!_isSubMenuOpen) {
+            setState(() => _hoveredMenuIndex = null);
+            _removeOverlay();
+          }
+        });
+      },
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              color: _hoveredMenuIndex == index ? Colors.blue[200] : Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: screenSize.width *0.013,
+
+            ),
+          ),
+          const SizedBox(height: 5),
+          Visibility(
+            maintainAnimation: true,
+            maintainState: true,
+            maintainSize: true,
+            visible: _hoveredMenuIndex == index,
+            child: Container(
+              height: 2,
+              width: 20,
+              color: Colors.blue[200],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
 
   late AnimationController controller;
   late Animation<double> textRevealAnimation;
@@ -125,16 +283,13 @@ class _OurTeamScreenState extends State<OurTeamScreen> with SingleTickerProvider
   @override
   Widget build(BuildContext context) {
    var screenSize = MediaQuery.of(context).size;
-    _opacity =
-        _scrollPosition < screenSize.height * 0.40
-            ? _scrollPosition /
-                (screenSize.height * 0.40)
-            : 1;
-    return   Scaffold(
-       drawer: ResponsiveWidget.isSmallScreen(context)
+
+    return  Scaffold(
+      drawer: ResponsiveWidget.isSmallScreen(context)
          ? 
       
       Drawer(
+    
         child: Container(
           color: const Color(0xfffffffff),
           child: Column(
@@ -191,11 +346,7 @@ class _OurTeamScreenState extends State<OurTeamScreen> with SingleTickerProvider
                 ),
                
               ),
-              ListTile(
-                onTap: () {
-                                                  context.go('/services');
-
-                },
+              ExpansionTile(
                 leading: const Icon(
                   Iconsax.bag_2_bold,
                   size: 22,
@@ -208,8 +359,82 @@ class _OurTeamScreenState extends State<OurTeamScreen> with SingleTickerProvider
                     color: Colors.black,
                   ),
                 ),
-                
+                trailing: const Icon(
+                  Iconsax.arrow_down_1_outline,
+                  size: 22,
+                  color: Colors.black,
+                ),
+                children: <Widget>[
+                 
+                  ListTile(
+                    title: const Text(
+                      'Energy Consulting',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                      ),
+                    ),
+                    onTap: () {
+                      // Navigate or handle logic for viewing withdrawal list
+                      // navigationService
+                      //     .push(const WithdarwalListScreen());
+                      context.go('/services/energy-consulting');
+
+                    },
+                  ),
+                  ListTile(
+                    title: const Text(
+                      'Community Development',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                      ),
+                    ),
+                    onTap: () {
+                      // Navigate or handle logic for withdrawal settings
+                      // navigationService
+                      //     .push(const WithdrawalSettingScreen());
+                                            context.go('/services/community-development');
+
+                    },
+                  ),
+                  ListTile(
+                    title: const Text(
+                      'Business Consulting',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                      ),
+                    ),
+                    onTap: () {
+                      // Navigate or handle logic for viewing withdrawal list
+                      // navigationService
+                      //     .push(const WithdarwalListScreen());
+                      context.go('/services/business-consulting');
+
+                    },
+                  ),
+                ],
               ),
+              // ListTile(
+              //   onTap: () {
+              //                                     context.go('/services');
+
+              //   },
+              //   leading: const Icon(
+              //     Iconsax.bag_2_bold,
+              //     size: 22,
+              //     color: Color(0xff4779A3),
+              //   ),
+              //   title: const Text(
+              //     'Services',
+              //     style: TextStyle(
+              //       fontSize: 15,
+              //       color: Colors.black,
+              //     ),
+              //   ),
+                
+              // ),
              
                ListTile(
                 onTap: () {
@@ -251,7 +476,7 @@ class _OurTeamScreenState extends State<OurTeamScreen> with SingleTickerProvider
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Text(
-                    'Copyright © 2024 | Solevad Energy',
+                    'Copyright © 2024 | Solevad Consulting',
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 13,
@@ -271,7 +496,7 @@ class _OurTeamScreenState extends State<OurTeamScreen> with SingleTickerProvider
           pinned: false,
           floating: false,
           snap: false,
-          expandedHeight: 450,
+          expandedHeight: 500,
           backgroundColor: Colors.transparent,
             automaticallyImplyLeading: ResponsiveWidget.isSmallScreen(context)
              ?true : false, // 👈 This hides the back button
@@ -313,7 +538,7 @@ class _OurTeamScreenState extends State<OurTeamScreen> with SingleTickerProvider
                           },
                           child: Image.asset(
                             'assets/images/solevadlogo.png',
-                            scale: 5,
+                            scale: screenSize.width *0.0037,
                           ),
                         ),
       
@@ -352,7 +577,7 @@ class _OurTeamScreenState extends State<OurTeamScreen> with SingleTickerProvider
                                             ? Colors.blue[200]
                                             : Colors.white,
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 16,
+                                            fontSize: screenSize.width *0.013,
                                       ),
                                     ),
                                     const SizedBox(height: 5),
@@ -392,7 +617,7 @@ class _OurTeamScreenState extends State<OurTeamScreen> with SingleTickerProvider
                                             ? Colors.blue[200]
                                             : Colors.white,
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 16,
+                                            fontSize: screenSize.width *0.013,
                                       ),
                                     ),
                                     const SizedBox(height: 5),
@@ -411,45 +636,7 @@ class _OurTeamScreenState extends State<OurTeamScreen> with SingleTickerProvider
                                 ),
                               ),
                               SizedBox(width: screenSize.width / 20),
-                              InkWell(
-                                onHover: (value) {
-                                  setState(() {
-                                    value
-                                        ? _isHovering[2] = true
-                                        : _isHovering[2] = false;
-                                  });
-                                },
-                                onTap: () {
-                                  context.go('/services');
-                                },
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(
-                                      'Services',
-                                      style: TextStyle(
-                                        color: _isHovering[2]
-                                            ? Colors.blue[200]
-                                            : Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 5),
-                                    Visibility(
-                                      maintainAnimation: true,
-                                      maintainState: true,
-                                      maintainSize: true,
-                                      visible: _isHovering[2],
-                                      child: Container(
-                                        height: 2,
-                                        width: 20,
-                                        color: Colors.white,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
+                            _buildMenuItem(context, "Services", 0),
                               SizedBox(width: screenSize.width / 20),
       
                               InkWell(
@@ -473,7 +660,7 @@ class _OurTeamScreenState extends State<OurTeamScreen> with SingleTickerProvider
                                             ? Colors.blue[200]
                                             : Colors.white,
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 16,
+                                            fontSize: screenSize.width *0.013,
       
                                       ),
                                     ),
@@ -514,7 +701,7 @@ class _OurTeamScreenState extends State<OurTeamScreen> with SingleTickerProvider
                                             ? Colors.blue[200]
                                             : Colors.white,
                                             fontWeight: FontWeight.bold,
-                                             fontSize: 16,
+                                            fontSize: screenSize.width *0.013,
       
                                       ),
                                     ),
@@ -549,19 +736,19 @@ class _OurTeamScreenState extends State<OurTeamScreen> with SingleTickerProvider
                         ElevatedButton(
                           onPressed: () {
                             //context.go('/Our_Services');
-                          context.go('/book-consultation');
+                            context.go('/book-consultation');
                           },
                           style: ElevatedButton.styleFrom(
                              shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(1),
                             ),
-                            fixedSize: const Size(170, 45),
+                            fixedSize: Size(screenSize.width *0.11, 45),
                             backgroundColor: const Color(0xff4779A3),
                           ),
-                          child: const Text(
+                          child:  Text(
                             'Get Started',
                             style: TextStyle(
-                              fontSize: 13,
+                             fontSize: screenSize.width *0.011,
                               color: Color(0xffffffff),
                               fontWeight: FontWeight.bold,
                             ),
@@ -577,189 +764,186 @@ class _OurTeamScreenState extends State<OurTeamScreen> with SingleTickerProvider
             background: Stack(
               fit: StackFit.expand,
               children: [
-                  ResponsiveWidget.isSmallScreen(
-                      context)
-                  ? Container(
-                      height: 300,
-                      decoration:
-                          const BoxDecoration(
-                              image:
-                                  DecorationImage(
-                                      fit: BoxFit
-                                          .cover,
-                                      colorFilter:
-                                          ColorFilter
-                                              .mode(
-                                        Colors
-                                            .black54,
-                                        BlendMode
-                                            .darken,
-                                      ),
-                                      image: AssetImage(
-                                          'assets/images/group.jpg'))),
-                      child: Row(
-                        mainAxisAlignment:
-                            MainAxisAlignment
-                                .spaceBetween,
-                        children: [
-                          Expanded(
-                            flex: 5,
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets
-                                      .only(
-                                      left: 30,
-                                      top: 110),
-                              child: Column(
-                                crossAxisAlignment:
-                                    CrossAxisAlignment
-                                        .start,
-                                children: [
-                                DefaultTextStyle(
+      ResponsiveWidget.isSmallScreen(context)
+          ? 
+           Container(
+      height: 530,
+       width: double.infinity,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/corp.jpg',),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Colors.black54,
+                      BlendMode.darken,
+                    ),
+                  ),
+                ),
+      child: Stack(
+        children: [
+     
+
+           // Static Text on top
+          Positioned(
+            left: 50,
+            top: 220,
+            right: 50,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                 DefaultTextStyle(
         style: const TextStyle(
           fontFamily: 'Mulish',
-         fontSize: 25,
+         fontSize: 28,
                     color: Colors.white,
                     fontWeight: FontWeight.w800,
         ),
         child: Center(
-          child: AnimatedTextKit(
-            animatedTexts: [
-              TypewriterAnimatedText(
-                'About Us',
-                speed: const Duration(milliseconds: 100),
-                cursor: '|'
-              ),
-            ],
-            totalRepeatCount: 1,
-            pause: const Duration(milliseconds: 1000),
-            displayFullTextOnTap: true,
-            stopPauseOnTap: true,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+    constraints: const BoxConstraints(maxWidth: 950),
+            child: AnimatedTextKit(
+              animatedTexts: [
+                TypewriterAnimatedText(
+                  'About Us',
+                  speed: const Duration(milliseconds: 100),
+                  textAlign: TextAlign.center,
+                  cursor: '|'
+                ),
+              ],
+              totalRepeatCount: 1,
+              pause: const Duration(milliseconds: 1000),
+              displayFullTextOnTap: true,
+              stopPauseOnTap: true,
+            ),
           ),
         ),
       ),
-      const SizedBox(height: 20),
+              
+                const SizedBox(height: 20),
+       Center(
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+    constraints: const BoxConstraints(maxWidth: 1000), // Constrain width for better block layout
+    child: Text(
+      'Innovative Solutions | Expert Guidance | Sustainable Growth',
+      textAlign: TextAlign.justify, // This aligns both edges
+      style: TextStyle(
+        fontSize: screenSize.width * 0.028, // Adjusted for readability
+        color: Colors.white,
+        fontWeight: FontWeight.w500,
+      ),
+    ),
+  ),
+),
+              
+              
+              ],
+            ),
+          ),
 
-               
-                const Center(
-                  child: Text(
-                    'Innovative Solutions | Expert Guidance | Sustainable Growth',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
+          // Indicator Dots
+          // Positioned(
+          //   bottom: 30,
+          //   left: 230,
+          //   child: Row(
+          //     children: List.generate(
+          //       imageList.length,
+          //       (index) => Container(
+          //         margin: const EdgeInsets.symmetric(horizontal: 5),
+          //         width: _currentIndex == index ? 11 : 7,
+          //         height: _currentIndex == index ? 11 : 7,
+          //         decoration: BoxDecoration(
+          //           color: _currentIndex == index ? Colors.white : Colors.grey,
+          //           shape: BoxShape.circle,
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
+        ],
+      ),
+    )
+          : Container(
+             width: double.infinity,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/corp.jpg',),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Colors.black54,
+                      BlendMode.darken,
                     ),
                   ),
                 ),
-                 const SizedBox(height: 20),
+      height: 700,
+      child: Stack(
+        children: [
+         
 
-               
-                const Center(
-                  child: Text(
-                    'Each solution is tailored to the specific need of the entity or community to maximize operational efficiency. Solevad Consulting is a leading consultancy firm specializing in energy solutions, business strategy, and operational excellence. With years of industry experience, we help businesses and organizations optimize their energy consumption, improve efficiency, and achieve sustainable growth. Our team of experts provides tailored solutions that align with your unique business goals.',
-                  textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-                                 
-                                ],
-                              ),
-                            ),
-                          ),
-                          //const Expanded(flex: 9, child: FirstPageImage())
-                        ],
-                      ),
-                    )
-                  : Container(
-                      height: 400,
-                      decoration:
-                          const BoxDecoration(
-                              image:
-                                  DecorationImage(
-                                      fit: BoxFit
-                                          .cover,
-                                      colorFilter:
-                                          ColorFilter
-                                              .mode(
-                                        Colors
-                                            .black54,
-                                        BlendMode
-                                            .darken,
-                                      ),
-                                      image: AssetImage(
-                                          'assets/images/group.jpg'))),
-                      child: Row(
-                        mainAxisAlignment:
-                            MainAxisAlignment
-                                .spaceBetween,
-                        children: [
-                          Expanded(
-                            flex: 5,
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets
-                                      .only(
-                                      left: 90,
-                                      top: 130),
-                              child: Column(
-                                crossAxisAlignment:
-                                    CrossAxisAlignment
-                                        .start,
-                                children: [
-                                DefaultTextStyle(
+            // Static Text on top
+          Positioned(
+            left: 90,
+            top: 190,
+            right: 50,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                DefaultTextStyle(
         style: const TextStyle(
           fontFamily: 'Mulish',
          fontSize: 45,
                     color: Colors.white,
                     fontWeight: FontWeight.w800,
         ),
-        child: AnimatedTextKit(
-          animatedTexts: [
-            TypewriterAnimatedText(
-              'About Us',
-              speed: const Duration(milliseconds: 100),
-              cursor: '|'
+        child: Center(
+          child: Container(
+             padding: const EdgeInsets.symmetric(horizontal: 24.0),
+    constraints: const BoxConstraints(maxWidth: 1000),
+            child: AnimatedTextKit(
+              animatedTexts: [
+                TypewriterAnimatedText(
+                  'About Us',
+                                    textAlign: TextAlign.center,
+            
+                  speed: const Duration(milliseconds: 100),
+                  cursor: '|'
+                ),
+              ],
+              totalRepeatCount: 2,
+              repeatForever: true,
+              pause: const Duration(milliseconds: 10000),
+              displayFullTextOnTap: true,
+              stopPauseOnTap: true,
             ),
-          ],
-          totalRepeatCount: 2,
-          repeatForever: true,
-          pause: const Duration(milliseconds: 10000),
-          displayFullTextOnTap: true,
-          stopPauseOnTap: true,
+          ),
         ),
       ),
-      const SizedBox(height: 20),
-                const Text(
-                  'Innovative Solutions | Expert Guidance | Sustainable Growth',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                 const SizedBox(height: 20),
-                const Text(
-                  'Each solution is tailored to the specific need of the entity or community to maximize\noperational efficiency. Solevad Consulting is a leading consultancy firm specializing\nin energy solutions, business strategy, and operational excellence. With years of\nindustry experience, we help businesses and organizations optimize their energy\nconsumption, improve efficiency, and achieve sustainable growth. Our team of experts\nprovides tailored solutions that align with your unique business goals.',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                                  
-                                ],
-                              ),
-                            ),
-                          ),
-                          //const Expanded(flex: 9, child: FirstPageImage())
-                        ],
-                      ),
-                    ),
+                const SizedBox(height: 20),
+              
+                   Center(
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+    constraints: const BoxConstraints(maxWidth: 1000), // Constrain width for better block layout
+    child: Text(
+      'Innovative Solutions | Expert Guidance | Sustainable Growth',
+      textAlign: TextAlign.justify, // This aligns both edges
+      style: TextStyle(
+        fontSize: screenSize.width * 0.018, // Adjusted for readability
+        color: Colors.white,
+        fontWeight: FontWeight.w500,
+      ),
+    ),
+  ),
+),
               ],
+            ),
+          ),
+
+        
+        ],
+      ),
+    )   ],
             ),
           ),
         ),
@@ -768,9 +952,19 @@ class _OurTeamScreenState extends State<OurTeamScreen> with SingleTickerProvider
         const SliverToBoxAdapter(
           child: Column(
             children: [
-                            Sustain2(),
-      Renewable2(),
-      EnergyManage2(),
+              SolvedaServicesApp(),
+           Renewable10(),
+          Renewable11(),
+          Renewable12(),
+
+                 //   Renewables3(),
+                  //  Renewables4(),
+                  //  Renewables5(),
+                   // Renewables6(),
+          //           Renewable7(),
+          //           Renewable8(),
+
+      // EnergyManage(),
       // EnergyProcure(),
       // RealEstate(),
           BottomBar(),

@@ -42,6 +42,165 @@ class _WholeScreenState extends State<WholeScreen> {
     super.initState();
   }
 
+  OverlayEntry? _overlayEntry;
+  bool _isSubMenuOpen = false;
+  int? _hoveredMenuIndex;
+
+ // List of submenu items with routes
+final Map<int, List<Map<String, String>>> _subMenuItems = {
+ 
+  0: [
+    {"title": "Energy Consulting", "route": "/services/energy-consulting"},
+    {"title": "Community Development", "route": "/services/community-development"},
+    {"title": "Business Consulting", "route": "/services/business-consulting"},
+  ],
+};
+
+int? _hoveredIndex; // null when nothing is hovered
+
+bool hover = false;
+  /// Show submenu on hover
+  void _showSubMenu(BuildContext context, int index, Offset position) {
+    _removeOverlay(); // Remove existing submenu first
+
+    _overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        left: position.dx,
+        top: position.dy + 30,
+        child: MouseRegion(
+          onEnter: (_) => _isSubMenuOpen = true, // Keep submenu open
+          onExit: (_) {
+            Future.delayed(const Duration(milliseconds: 300), () {
+              if (!_isSubMenuOpen) _removeOverlay();
+            });
+          },
+          child: Material(
+            color: Colors.transparent,
+            child: Container(
+              width: 450,
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(1),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 5,
+                    spreadRadius: 2,
+                  ),
+                ],
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+               children: _subMenuItems[index]!.asMap().entries.map((entry) {
+  int itemIndex = entry.key;
+  Map<String, String> item = entry.value;
+
+  return MouseRegion(
+    onEnter: (_) {
+      setState(() {
+        _hoveredIndex = itemIndex;
+      });
+    },
+    onExit: (_) {
+      setState(() {
+        _hoveredIndex = null;
+      });
+    },
+   
+    child: InkWell(
+  
+      onTap: () {
+        _removeOverlay(); // Close menu
+        context.go(item["route"]!);
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        child: Column(
+          children: [
+            Text(
+              item["title"]!,
+              style: TextStyle(
+                color: _hoveredIndex == itemIndex ? Colors.blue[200] : Colors.black,
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+               
+          ],
+        ),
+      ),
+    ),
+  );
+}).toList(),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+
+    Overlay.of(context).insert(_overlayEntry!);
+  }
+
+  /// Removes overlay menu
+  void _removeOverlay() {
+    _overlayEntry?.remove();
+    _overlayEntry = null;
+    _isSubMenuOpen = false;
+  }
+
+  /// Main menu item widget
+  Widget _buildMenuItem(BuildContext context, String title, int index) {
+                var screenSize = MediaQuery.of(context).size;
+
+    return MouseRegion(
+      onEnter: (event) {
+        setState(() {
+          _hoveredMenuIndex = index;
+        });
+        _showSubMenu(context, index, event.position);
+      },
+      onExit: (_) {
+        Future.delayed(const Duration(milliseconds: 300), () {
+          if (!_isSubMenuOpen) {
+            setState(() => _hoveredMenuIndex = null);
+            _removeOverlay();
+          }
+        });
+      },
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              color: _hoveredMenuIndex == index ? Colors.blue[200] : Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: screenSize.width *0.013,
+
+            ),
+          ),
+          const SizedBox(height: 5),
+          Visibility(
+            maintainAnimation: true,
+            maintainState: true,
+            maintainSize: true,
+            visible: _hoveredMenuIndex == index,
+            child: Container(
+              height: 2,
+              width: 20,
+              color: Colors.blue[200],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+
    final List _isHovering = [
     false,
     false,
@@ -64,7 +223,7 @@ class _WholeScreenState extends State<WholeScreen> {
         pinned: false,
         floating: false,
         snap: false,
-        expandedHeight: 500,
+        expandedHeight: 630,
         backgroundColor: Colors.transparent,
           automaticallyImplyLeading: ResponsiveWidget.isSmallScreen(context)
            ?true : false, // 👈 This hides the back button
@@ -106,7 +265,7 @@ title: ResponsiveWidget.isSmallScreen(context)
                         },
                         child: Image.asset(
                           'assets/images/solevadlogo.png',
-                          scale: 5,
+                          scale: screenSize.width *0.0037,
                         ),
                       ),
 
@@ -145,7 +304,7 @@ title: ResponsiveWidget.isSmallScreen(context)
                                           ? Colors.blue[200]
                                           : Colors.white,
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 16,
+                                          fontSize: screenSize.width *0.013,
                                     ),
                                   ),
                                   const SizedBox(height: 5),
@@ -185,7 +344,7 @@ title: ResponsiveWidget.isSmallScreen(context)
                                           ? Colors.blue[200]
                                           : Colors.white,
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 16,
+                                          fontSize: screenSize.width *0.013,
                                     ),
                                   ),
                                   const SizedBox(height: 5),
@@ -204,45 +363,7 @@ title: ResponsiveWidget.isSmallScreen(context)
                               ),
                             ),
                             SizedBox(width: screenSize.width / 20),
-                            InkWell(
-                              onHover: (value) {
-                                setState(() {
-                                  value
-                                      ? _isHovering[2] = true
-                                      : _isHovering[2] = false;
-                                });
-                              },
-                              onTap: () {
-                                context.go('/services');
-                              },
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    'Services',
-                                    style: TextStyle(
-                                      color: _isHovering[2]
-                                          ? Colors.blue[200]
-                                          : Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 5),
-                                  Visibility(
-                                    maintainAnimation: true,
-                                    maintainState: true,
-                                    maintainSize: true,
-                                    visible: _isHovering[2],
-                                    child: Container(
-                                      height: 2,
-                                      width: 20,
-                                      color: Colors.white,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
+                          _buildMenuItem(context, "Services", 0),
                             SizedBox(width: screenSize.width / 20),
 
                             InkWell(
@@ -266,7 +387,7 @@ title: ResponsiveWidget.isSmallScreen(context)
                                           ? Colors.blue[200]
                                           : Colors.white,
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 16,
+                                          fontSize: screenSize.width *0.013,
 
                                     ),
                                   ),
@@ -307,7 +428,7 @@ title: ResponsiveWidget.isSmallScreen(context)
                                           ? Colors.blue[200]
                                           : Colors.white,
                                           fontWeight: FontWeight.bold,
-                                           fontSize: 16,
+                                          fontSize: screenSize.width *0.013,
 
                                     ),
                                   ),
@@ -348,13 +469,13 @@ title: ResponsiveWidget.isSmallScreen(context)
                            shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(1),
                           ),
-                          fixedSize: const Size(170, 45),
+                          fixedSize: Size(screenSize.width *0.11, 45),
                           backgroundColor: const Color(0xff4779A3),
                         ),
-                        child: const Text(
+                        child:  Text(
                           'Get Started',
                           style: TextStyle(
-                            fontSize: 13,
+                           fontSize: screenSize.width *0.011,
                             color: Color(0xffffffff),
                             fontWeight: FontWeight.bold,
                           ),
@@ -385,11 +506,11 @@ title: ResponsiveWidget.isSmallScreen(context)
         //SeventhSection(),
         NinthSection(),
                 Market(),
-                EighthSection(),
+                //EighthSection(),
 
        
        FifthSection(),
-       TeamSection(),
+       //TeamSection(),
        Booking(),
  SizedBox(
           height: 50.0,

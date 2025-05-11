@@ -305,7 +305,7 @@ class _BRenewablesState extends State<BRenewables> {
    child: ClipRRect(
                        borderRadius: BorderRadius.circular(5),
                        child: Image.asset(
-                         'assets/images/vector3.jpg', // Replace with your image path
+                         'assets/images/plan.jpg', // Replace with your image path
                          width: 380,
                          height: 350,
                          fit: BoxFit.cover,
@@ -331,7 +331,7 @@ class _BRenewablesState extends State<BRenewables> {
                    ClipRRect(
                      borderRadius: BorderRadius.circular(5),
                      child: Image.asset(
-                         'assets/images/vector3.jpg', // Replace with your image path
+                         'assets/images/plan.jpg', // Replace with your image path
                        width: 620,
                        height: 350,
                        fit: BoxFit.cover,
@@ -446,7 +446,7 @@ class _BRenewables3State extends State<BRenewables3> {
    child: ClipRRect(
                        borderRadius: BorderRadius.circular(5),
                        child: Image.asset(
-                         'assets/images/tech.jpg', // Replace with your image path
+                         'assets/images/plan2.jpg', // Replace with your image path
                          width: 380,
                          height: 350,
                          fit: BoxFit.cover,
@@ -511,7 +511,7 @@ padding: const EdgeInsets.symmetric(horizontal: 24.0),
                    ClipRRect(
                      borderRadius: BorderRadius.circular(5),
                      child: Image.asset(
-                         'assets/images/tech.jpg', // Replace with your image path
+                         'assets/images/plan2.jpg', // Replace with your image path
                        width: 620,
                        height: 350,
                        fit: BoxFit.cover,
@@ -586,7 +586,7 @@ class _BRenewables4State extends State<BRenewables4> {
    child: ClipRRect(
                        borderRadius: BorderRadius.circular(5),
                        child: Image.asset(
-                         'assets/images/broker.jpg', // Replace with your image path
+                         'assets/images/plan3.jpg', // Replace with your image path
                          width: 380,
                          height: 350,
                          fit: BoxFit.cover,
@@ -612,7 +612,7 @@ class _BRenewables4State extends State<BRenewables4> {
                    ClipRRect(
                      borderRadius: BorderRadius.circular(5),
                      child: Image.asset(
-                         'assets/images/broker.jpg', // Replace with your image path
+                         'assets/images/plan3.jpg', // Replace with your image path
                        width: 620,
                        height: 350,
                        fit: BoxFit.cover,
@@ -729,7 +729,7 @@ class _BRenewables5State extends State<BRenewables5> {
    child: ClipRRect(
                        borderRadius: BorderRadius.circular(5),
                        child: Image.asset(
-                         'assets/images/util.jpg', // Replace with your image path
+                         'assets/images/plan4.jpg', // Replace with your image path
                          width: 380,
                          height: 350,
                          fit: BoxFit.cover,
@@ -794,7 +794,7 @@ padding: const EdgeInsets.symmetric(horizontal: 24.0),
                    ClipRRect(
                      borderRadius: BorderRadius.circular(5),
                      child: Image.asset(
-                         'assets/images/util.jpg', // Replace with your image path
+                         'assets/images/plan4.jpg', // Replace with your image path
                        width: 620,
                        height: 350,
                        fit: BoxFit.cover,

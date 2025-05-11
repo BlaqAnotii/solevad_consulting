@@ -110,7 +110,7 @@ class _CallState extends State<Call> {
                                 const SizedBox(height: 10),
 
                 const Text(
-                  'Edo house complex, suite 105 Bishop Oluwole Street,\nVictoria island.',
+                  '4245 N Central Expy, #490. Dallas TX 75205',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.white,
@@ -130,7 +130,7 @@ class _CallState extends State<Call> {
                                 const SizedBox(height: 10),
 
                 const Text(
-                  '+1 (469) 544-6914, 09028297993',
+                  '469-544-6914',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.white,
@@ -150,7 +150,7 @@ class _CallState extends State<Call> {
                                 const SizedBox(height: 10),
 
                 const Text(
-                  'info@solevad.com',
+                  'Operations@solevadaa.com',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.white,
@@ -250,7 +250,7 @@ class _CallState extends State<Call> {
                                 const SizedBox(height: 10),
 
                 const Text(
-                  'Edo house complex, suite 105 Bishop Oluwole Street,\nVictoria island.',
+                  '4245 N Central Expy, #490. Dallas TX 75205',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.white,
@@ -270,7 +270,7 @@ class _CallState extends State<Call> {
                                 const SizedBox(height: 10),
 
                 const Text(
-                  '+1 (469) 544-6914, 09028297993',
+                  '469-544-6914',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.white,
@@ -290,7 +290,7 @@ class _CallState extends State<Call> {
                                 const SizedBox(height: 10),
 
                 const Text(
-                  'info@solevad.com',
+                  'Operations@solevadaa.com',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.white,

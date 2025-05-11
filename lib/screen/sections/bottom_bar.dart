@@ -89,7 +89,7 @@ class BottomBar extends StatelessWidget {
                     ),
                     Container(
                       decoration: const BoxDecoration(
-                        color: const Color(0xff4779A3),// Purple button
+                        color:  Color(0xff8B4513),// Purple button
                         shape: BoxShape.circle,
                       ),
                       child: IconButton(
@@ -265,7 +265,7 @@ Container(
                     ),
                     Container(
                       decoration: const BoxDecoration(
-                        color: const Color(0xff4779A3),// Purple button
+                        color:  Color(0xff8B4513),// Purple button
                         shape: BoxShape.circle,
                       ),
                       child: IconButton(

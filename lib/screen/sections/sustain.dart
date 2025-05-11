@@ -447,7 +447,7 @@ class _Renewables3State extends State<Renewables3> {
    child: ClipRRect(
                        borderRadius: BorderRadius.circular(5),
                        child: Image.asset(
-                         'assets/images/equity1.jpg', // Replace with your image path
+                         'assets/images/equity2.jpg', // Replace with your image path
                          width: 380,
                          height: 350,
                          fit: BoxFit.cover,
@@ -512,7 +512,7 @@ padding: const EdgeInsets.symmetric(horizontal: 24.0),
                    ClipRRect(
                      borderRadius: BorderRadius.circular(5),
                      child: Image.asset(
-                         'assets/images/equity1.jpg', // Replace with your image path
+                         'assets/images/equity2.jpg', // Replace with your image path
                        width: 620,
                        height: 350,
                        fit: BoxFit.cover,
@@ -613,7 +613,7 @@ class _Renewables4State extends State<Renewables4> {
                    ClipRRect(
                      borderRadius: BorderRadius.circular(5),
                      child: Image.asset(
-                         'assets/images/broker.jpg', // Replace with your image path
+                         'assets/images/equity3.jpg', // Replace with your image path
                        width: 620,
                        height: 350,
                        fit: BoxFit.cover,
@@ -730,7 +730,7 @@ class _Renewables5State extends State<Renewables5> {
    child: ClipRRect(
                        borderRadius: BorderRadius.circular(5),
                        child: Image.asset(
-                         'assets/images/util.jpg', // Replace with your image path
+                         'assets/images/equity4.jpg', // Replace with your image path
                          width: 380,
                          height: 350,
                          fit: BoxFit.cover,
@@ -795,7 +795,7 @@ padding: const EdgeInsets.symmetric(horizontal: 24.0),
                    ClipRRect(
                      borderRadius: BorderRadius.circular(5),
                      child: Image.asset(
-                         'assets/images/util.jpg', // Replace with your image path
+                         'assets/images/equity4.jpg', // Replace with your image path
                        width: 620,
                        height: 350,
                        fit: BoxFit.cover,
@@ -870,7 +870,7 @@ class _Renewables6State extends State<Renewables6> {
    child: ClipRRect(
                        borderRadius: BorderRadius.circular(5),
                        child: Image.asset(
-                         'assets/images/measure.jpg', // Replace with your image path
+                         'assets/images/equity5.jpg', // Replace with your image path
                          width: 380,
                          height: 350,
                          fit: BoxFit.cover,
@@ -896,7 +896,7 @@ class _Renewables6State extends State<Renewables6> {
                    ClipRRect(
                      borderRadius: BorderRadius.circular(5),
                      child: Image.asset(
-                         'assets/images/measure.jpg', // Replace with your image path
+                         'assets/images/equity5.jpg', // Replace with your image path
                        width: 620,
                        height: 350,
                        fit: BoxFit.cover,

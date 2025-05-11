@@ -28,15 +28,20 @@ class _MarketState extends State<Market> {
     // },
     {
       "icon": 'assets/images/vector3.jpg',
-      "title": "Energy Consulting"
+      "title": "Energy Consulting",
+      'index': "1",
     },
     {
       "icon": 'assets/images/vector.jpg',
-      "title": "Community Development"
+      "title": "Community Development",
+      'index': "2",
+
     },
     {
       "icon": 'assets/images/vector5.jpg',
-      "title": "Business Consulting"
+      "title": "Business Consulting",
+      'index': "3",
+
     },
   ];
 
@@ -113,14 +118,20 @@ const SizedBox(height: 30),
                Stack(
                    children: [
                      // Background image container
-                     Container(
-                       height: 250,
-                       width: screenSize.width *0.75,
-                       decoration: BoxDecoration(
-                         borderRadius: BorderRadius.circular(1),
-                         image:  const DecorationImage(
-                                 image: AssetImage("assets/images/vector3.jpg"),
-                                 fit: BoxFit.cover,
+                     InkWell(
+                      onTap: () {
+                                                                       context.go('/services/energy-consulting');
+
+                      },
+                       child: Container(
+                         height: 250,
+                         width: screenSize.width *0.75,
+                         decoration: BoxDecoration(
+                           borderRadius: BorderRadius.circular(1),
+                           image:  const DecorationImage(
+                                   image: AssetImage("assets/images/vector3.jpg"),
+                                   fit: BoxFit.cover,
+                           ),
                          ),
                        ),
                      ),
@@ -130,61 +141,73 @@ const SizedBox(height: 30),
                        bottom: 0,
                        left: 0,
                        right: 0,
-                       child: ClipRRect(
-                         borderRadius: const BorderRadius.only(
-                                 bottomLeft: Radius.circular(1),
-                                 bottomRight: Radius.circular(1),
-                         ),
-                         child: BackdropFilter(
-                                 filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                                 child: Container(
-               height: 210 * 0.38, // 10% of height
-               color: Colors.black.withOpacity(0),
-                child:  Padding(
-                  padding: const EdgeInsets.only(
-                   left: 10,
-                  ),
-                  child: Column(
-                     crossAxisAlignment: CrossAxisAlignment.start,
-                     children: [
-            const SizedBox(height: 20),          // Icons row
-                       Padding(
-                         padding: const EdgeInsets.only(
-                           right: 10,
-                         ),
-                         child: Row(
-                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                           children: [
-                              const Text(
-                     'Energy Consulting',
-                               style: TextStyle(
-                                 color: Colors.white,
-                                 fontWeight: FontWeight.bold,
-                                 fontSize: 20,
-                               ),
-                             ),
-                              Container(
-                               padding: const EdgeInsets.all(7),
-                               decoration: const BoxDecoration(
-                                 color: Color(0xff4779A3),
-                                 shape: BoxShape.circle
-                               ),
-                                child: const Center(
-                                  child: Icon(
-                                   Icons.arrow_forward_ios_sharp,
+                       child: InkWell(
+                        onTap: () {
+                                                                         context.go('/services/energy-consulting');
+
+                        },
+                         child: ClipRRect(
+                           borderRadius: const BorderRadius.only(
+                                   bottomLeft: Radius.circular(1),
+                                   bottomRight: Radius.circular(1),
+                           ),
+                           child: BackdropFilter(
+                                   filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                                   child: Container(
+                                        height: 210 * 0.38, // 10% of height
+                                        color: Colors.black.withOpacity(0),
+                                         child:  Padding(
+                                           padding: const EdgeInsets.only(
+                                            left: 10,
+                                           ),
+                                           child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                     const SizedBox(height: 20),          // Icons row
+                         Padding(
+                           padding: const EdgeInsets.only(
+                             right: 10,
+                           ),
+                           child: Row(
+                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                             children: [
+                                const Text(
+                                              'Energy Consulting',
+                                 style: TextStyle(
                                    color: Colors.white,
-                                   size: 20,),
-                                ),
-                              ),
-                         
-                           ],
-                         ),
-                       ),
-                  
-                     ],
-                   ),
-                ), // transparent but blurred
+                                   fontWeight: FontWeight.bold,
+                                   fontSize: 20,
                                  ),
+                               ),
+                                InkWell(
+                                  onTap: () {
+                                               context.go('/services/energy-consulting');
+                         
+                                  },
+                                  child: Container(
+                                   padding: const EdgeInsets.all(7),
+                                   decoration: const BoxDecoration(
+                                     color: Color(0xff8B4513),
+                                     shape: BoxShape.circle
+                                   ),
+                                    child: const Center(
+                                      child: Icon(
+                                       Icons.arrow_forward_ios_sharp,
+                                       color: Colors.white,
+                                       size: 20,),
+                                    ),
+                                  ),
+                                ),
+                           
+                             ],
+                           ),
+                         ),
+                                           
+                                              ],
+                                            ),
+                                         ), // transparent but blurred
+                                   ),
+                           ),
                          ),
                        ),
                      ),
@@ -194,14 +217,20 @@ const SizedBox(height: 30),
                    Stack(
                    children: [
                      // Background image container
-                     Container(
-                       height: 250,
-                       width: screenSize.width *0.75,
-                       decoration: BoxDecoration(
-                         borderRadius: BorderRadius.circular(1),
-                         image:  const DecorationImage(
-                                 image: AssetImage("assets/images/vector.jpg"),
-                                 fit: BoxFit.cover,
+                     InkWell(
+                      onTap: () {
+                                                   context.go('/services/community-development');
+
+                      },
+                       child: Container(
+                         height: 250,
+                         width: screenSize.width *0.75,
+                         decoration: BoxDecoration(
+                           borderRadius: BorderRadius.circular(1),
+                           image:  const DecorationImage(
+                                   image: AssetImage("assets/images/vector.jpg"),
+                                   fit: BoxFit.cover,
+                           ),
                          ),
                        ),
                      ),
@@ -211,61 +240,72 @@ const SizedBox(height: 30),
                        bottom: 0,
                        left: 0,
                        right: 0,
-                       child: ClipRRect(
-                         borderRadius: const BorderRadius.only(
-                                 bottomLeft: Radius.circular(1),
-                                 bottomRight: Radius.circular(1),
-                         ),
-                         child: BackdropFilter(
-                                 filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                                 child: Container(
-               height: 210 * 0.38, // 10% of height
-               color: Colors.black.withOpacity(0),
-                child:  Padding(
-                  padding: const EdgeInsets.only(
-                   left: 10,
-                  ),
-                  child: Column(
-                     crossAxisAlignment: CrossAxisAlignment.start,
-                     children: [
-            const SizedBox(height: 20),          // Icons row
-                       Padding(
-                         padding: const EdgeInsets.only(
-                           right: 10,
-                         ),
-                         child: Row(
-                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                           children: [
-                              const Text(
-                     'Community Development',
-                               style: TextStyle(
-                                 color: Colors.white,
-                                 fontWeight: FontWeight.bold,
-                                 fontSize: 20,
-                               ),
-                             ),
-                              Container(
-                               padding: const EdgeInsets.all(7),
-                               decoration: const BoxDecoration(
-                                 color: Color(0xff4779A3),
-                                 shape: BoxShape.circle
-                               ),
-                                child: const Center(
-                                  child: Icon(
-                                   Icons.arrow_forward_ios_sharp,
+                       child: InkWell(
+                        onTap: () {
+                           context.go('/services/community-development');
+                        },
+                         child: ClipRRect(
+                           borderRadius: const BorderRadius.only(
+                                   bottomLeft: Radius.circular(1),
+                                   bottomRight: Radius.circular(1),
+                           ),
+                           child: BackdropFilter(
+                                   filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                                   child: Container(
+                                        height: 210 * 0.38, // 10% of height
+                                        color: Colors.black.withOpacity(0),
+                                         child:  Padding(
+                                           padding: const EdgeInsets.only(
+                                            left: 10,
+                                           ),
+                                           child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                     const SizedBox(height: 20),          // Icons row
+                         Padding(
+                           padding: const EdgeInsets.only(
+                             right: 10,
+                           ),
+                           child: Row(
+                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                             children: [
+                                const Text(
+                                              'Community Development',
+                                 style: TextStyle(
                                    color: Colors.white,
-                                   size: 20,),
-                                ),
-                              ),
-                         
-                           ],
-                         ),
-                       ),
-                  
-                     ],
-                   ),
-                ), // transparent but blurred
+                                   fontWeight: FontWeight.bold,
+                                   fontSize: 20,
                                  ),
+                               ),
+                                InkWell(
+                                  onTap: () {
+                                                                                context.go('/services/community-development');
+                         
+                                  },
+                                  child: Container(
+                                   padding: const EdgeInsets.all(7),
+                                   decoration: const BoxDecoration(
+                                     color: Color(0xff8B4513),
+                                     shape: BoxShape.circle
+                                   ),
+                                    child: const Center(
+                                      child: Icon(
+                                       Icons.arrow_forward_ios_sharp,
+                                       color: Colors.white,
+                                       size: 20,),
+                                    ),
+                                  ),
+                                ),
+                           
+                             ],
+                           ),
+                         ),
+                                           
+                                              ],
+                                            ),
+                                         ), // transparent but blurred
+                                   ),
+                           ),
                          ),
                        ),
                      ),
@@ -276,14 +316,20 @@ const SizedBox(height: 30),
                    Stack(
                    children: [
                      // Background image container
-                     Container(
-                       height: 250,
-                       width: screenSize.width *0.75,
-                       decoration: BoxDecoration(
-                         borderRadius: BorderRadius.circular(1),
-                         image:  const DecorationImage(
-                                 image: AssetImage("assets/images/vector5.jpg"),
-                                 fit: BoxFit.cover,
+                     InkWell(
+                      onTap: () {
+                                      context.go('/services/business-consulting');
+
+                      },
+                       child: Container(
+                         height: 250,
+                         width: screenSize.width *0.75,
+                         decoration: BoxDecoration(
+                           borderRadius: BorderRadius.circular(1),
+                           image:  const DecorationImage(
+                                   image: AssetImage("assets/images/vector5.jpg"),
+                                   fit: BoxFit.cover,
+                           ),
                          ),
                        ),
                      ),
@@ -293,61 +339,74 @@ const SizedBox(height: 30),
                        bottom: 0,
                        left: 0,
                        right: 0,
-                       child: ClipRRect(
-                         borderRadius: const BorderRadius.only(
-                                 bottomLeft: Radius.circular(1),
-                                 bottomRight: Radius.circular(1),
-                         ),
-                         child: BackdropFilter(
-                                 filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                                 child: Container(
-               height: 210 * 0.38, // 10% of height
-               color: Colors.black.withOpacity(0),
-                child:  Padding(
-                  padding: const EdgeInsets.only(
-                   left: 10,
-                  ),
-                  child: Column(
-                     crossAxisAlignment: CrossAxisAlignment.start,
-                     children: [
-                       const SizedBox(height: 20),
-                       Padding(
-                         padding: const EdgeInsets.only(
-                           right: 10,
-                         ),
-                         child: Row(
-                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                           children: [
-                              const Text(
-                     'Business Consulting',
-                               style: TextStyle(
-                                 color: Colors.white,
-                                 fontWeight: FontWeight.bold,
-                                 fontSize: 20,
-                               ),
-                             ),
-                              Container(
-                               padding: const EdgeInsets.all(7),
-                               decoration: const BoxDecoration(
-                                 color: Color(0xff4779A3),
-                                 shape: BoxShape.circle
-                               ),
-                                child: const Center(
-                                  child: Icon(
-                                   Icons.arrow_forward_ios_sharp,
+                       child: InkWell(
+                        onTap: () {
+                              
+              context.go('/services/business-consulting');
+               
+                        },
+                         child: ClipRRect(
+                           borderRadius: const BorderRadius.only(
+                                   bottomLeft: Radius.circular(1),
+                                   bottomRight: Radius.circular(1),
+                           ),
+                           child: BackdropFilter(
+                                   filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                                   child: Container(
+                                        height: 210 * 0.38, // 10% of height
+                                        color: Colors.black.withOpacity(0),
+                                         child:  Padding(
+                                           padding: const EdgeInsets.only(
+                                            left: 10,
+                                           ),
+                                           child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                         const SizedBox(height: 20),
+                         Padding(
+                           padding: const EdgeInsets.only(
+                             right: 10,
+                           ),
+                           child: Row(
+                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                             children: [
+                                const Text(
+                                              'Business Consulting',
+                                 style: TextStyle(
                                    color: Colors.white,
-                                   size: 20,),
-                                ),
-                              ),
-                         
-                           ],
-                         ),
-                       ),
-                  
-                     ],
-                   ),
-                ), // transparent but blurred
+                                   fontWeight: FontWeight.bold,
+                                   fontSize: 20,
                                  ),
+                               ),
+                                InkWell(
+                                  onTap: () {
+                                               context.go('/services/business-consulting');
+                         
+                                  },
+                                  child: Container(
+                                   padding: const EdgeInsets.all(7),
+                                   decoration: const BoxDecoration(
+                                     color: Color(0xff8B4513),
+                                     shape: BoxShape.circle
+                                   ),
+                                    child: const Center(
+                                      child: Icon(
+                                       Icons.arrow_forward_ios_sharp,
+                                       color: Colors.white,
+                                       size: 20,),
+                                    ),
+                                  ),
+                                ),
+                           
+                             ],
+                           ),
+                         ),
+                                           
+                                              ],
+                                            ),
+                                         ), // transparent but blurred
+                                   ),
+                           ),
                          ),
                        ),
                      ),
@@ -430,14 +489,27 @@ const SizedBox(height: 30),
                 child:    Stack(
       children: [
         // Background image container
-        Container(
-          height: 250,
-          width: 360,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(1),
-            image:  DecorationImage(
-              image: AssetImage(service["icon"]!),
-              fit: BoxFit.cover,
+        InkWell(
+          onTap: () {
+                if (service["index"]=='1') {
+                        context.go('/services/energy-consulting');
+                  } else if (service["index"]=='2') {
+             context.go('/services/community-development');
+                  } else if(service["index"]=='3') {
+              context.go('/services/business-consulting');
+                  }else {
+                    return;
+                  }
+          },
+          child: Container(
+            height: 250,
+            width: 360,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(1),
+              image:  DecorationImage(
+                image: AssetImage(service["icon"]!),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),
@@ -447,60 +519,86 @@ const SizedBox(height: 30),
           bottom: 50,
           left: 0,
           right: 0,
-          child: ClipRRect(
-            borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(1),
-              bottomRight: Radius.circular(1),
-            ),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-              child: Container(
-                height: 210 * 0.38, // 10% of height
-                color: Colors.black.withOpacity(0),
-                 child:  Padding(
-                   padding: const EdgeInsets.only(
-                    left: 10,
-                   ),
-                   child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 12),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            right: 10,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                               Text(
-                      service["title"]!,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                ),
-                              ),
-                               Container(
-                                padding: const EdgeInsets.all(7),
-                                decoration: const BoxDecoration(
-                                  color: Color(0xff4779A3),
-                                  shape: BoxShape.circle
-                                ),
-                                 child: const Center(
-                                   child: Icon(
-                                    Icons.arrow_forward_ios_sharp,
+          child: InkWell(
+            onTap: () {
+                  if (service["index"]=='1') {
+                        context.go('/services/energy-consulting');
+                  } else if (service["index"]=='2') {
+             context.go('/services/community-development');
+                  } else if(service["index"]=='3') {
+              context.go('/services/business-consulting');
+                  }else {
+                    return;
+                  }
+            },
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(1),
+                bottomRight: Radius.circular(1),
+              ),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                child: Container(
+                  height: 210 * 0.38, // 10% of height
+                  color: Colors.black.withOpacity(0),
+                   child:  Padding(
+                     padding: const EdgeInsets.only(
+                      left: 10,
+                     ),
+                     child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 12),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              right: 10,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                 Text(
+                        service["title"]!,
+                                  style: const TextStyle(
                                     color: Colors.white,
-                                    size: 20,),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                                 InkWell(
+                                  onTap: () {
+                                                 if (service["index"]=='1') {
+                        context.go('/services/energy-consulting');
+                  } else if (service["index"]=='2') {
+             context.go('/services/community-development');
+                  } else if(service["index"]=='3') {
+              context.go('/services/business-consulting');
+                  }else {
+                    return;
+                  }
+                                  },
+                                   child: Container(
+                                    padding: const EdgeInsets.all(7),
+                                    decoration: const BoxDecoration(
+                                      color: Color(0xff8B4513),
+                                      shape: BoxShape.circle
+                                    ),
+                                     child: const Center(
+                                       child: Icon(
+                                        Icons.arrow_forward_ios_sharp,
+                                        color: Colors.white,
+                                        size: 20,),
+                                     ),
+                                   ),
                                  ),
-                               ),
-                          
-                            ],
+                            
+                              ],
+                            ),
                           ),
-                        ),
-                   
-                      ],
-                    ),
-                 ), // transparent but blurred
+                     
+                        ],
+                      ),
+                   ), // transparent but blurred
+                ),
               ),
             ),
           ),

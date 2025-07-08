@@ -15,7 +15,7 @@ class BottomBar extends StatelessWidget {
           ?
 
           Container(
-      height: 600,
+      height: 700,
   padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 40),
  decoration: const BoxDecoration(
                   image: DecorationImage(

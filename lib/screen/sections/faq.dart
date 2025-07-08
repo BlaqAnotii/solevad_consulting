@@ -112,6 +112,7 @@ class _FAQPageState extends State<FAQPage> {
         ListView.separated(
             padding: const EdgeInsets.all(16),
             shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
             itemCount: faqList.length,
             separatorBuilder: (_, __) => const SizedBox(height: 12),
             itemBuilder: (context, index) {

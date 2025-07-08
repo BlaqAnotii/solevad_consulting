@@ -274,7 +274,7 @@ const SizedBox(height: 30),
                                  style: TextStyle(
                                    color: Colors.white,
                                    fontWeight: FontWeight.bold,
-                                   fontSize: 20,
+                                   fontSize: 16,
                                  ),
                                ),
                                 InkWell(
